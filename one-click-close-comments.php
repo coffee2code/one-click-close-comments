@@ -5,7 +5,7 @@ Version: 1.0
 Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments
 Author: Scott Reilly
 Author URI: http://coffee2code.com
-Description: Close comments for a post or page with one click.
+Description: Conveniently close or open comments for a post or page with one click.
 
 From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user can close or open comments to any
 posts to which they have sufficient privileges to make such changes (essentially admins and post authors for their
