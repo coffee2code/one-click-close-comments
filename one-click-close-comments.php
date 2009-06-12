@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: One Click Close Comments
-Version: 1.0
+Version: 1.1
 Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments
 Author: Scott Reilly
 Author URI: http://coffee2code.com
@@ -16,7 +16,7 @@ page reload.
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
 
-Compatible with WordPress 2.6+, 2.7+.
+Compatible with WordPress 2.6+, 2.7+, 2.8+.
 
 =>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
 =>> for more information and the latest updates
@@ -56,6 +56,10 @@ class OneClickCloseComments {
 	var $help_text = array();
 
 	function OneClickCloseComments() {
+		global $pagenow;
+		if ( !is_admin() || !in_array($pagenow, array('admin-ajax.php', 'edit.php', 'edit-pages.php')) )
+			return;
+
 		$this->help_text = array(
 			0 => __('Comments are closed. Click to open.'),
 			1 => __('Comments are open. Click to close.')
@@ -93,7 +97,7 @@ class OneClickCloseComments {
 
 	function handle_column_data( $column_name, $post_id ) {
 		$post = get_post($post_id);
-		$ajax_url = get_bloginfo('wpurl') . '/wp-admin/admin-ajax.php';
+		$ajax_url = admin_url() . 'admin-ajax.php';
 		if ( $this->field == $column_name ) {
 			$auth = current_user_can('edit_post', $post_id);
 			$state = ('open' == $post->comment_status ? 1 : 0);
