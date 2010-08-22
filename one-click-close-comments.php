@@ -2,45 +2,30 @@
 /**
  * @package One_Click_Close_Comments
  * @author Scott Reilly
- * @version 2.0
+ * @version 2.0.1
  */
 /*
 Plugin Name: One Click Close Comments
-Version: 2.0
-Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments
+Version: 2.0.1
+Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Text Domain: one-click-close-comments
 Description: Conveniently close or open comments for a post or page with one click.
 
-From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user can close or open comments to any
-posts to which they have sufficient privileges to make such changes (essentially admins and post authors for their
-own posts).  This is done via an AJAX-powered color-coded indicator.  The color-coding gives instant feedback on the
-current status of the post for comments: green means the post/page is open to comments, red means the post/page is
-closed to comments.  Being AJAX-powered means that the change is submitted in the background without requiring a
-page reload.
+Compatible with WordPress 2.8+, 2.9+, 3.0+.
 
-This plugin will only function for administrative users in the admin who have JavaScript enabled.
-
-Compatible with WordPress 2.8+, 2.9+.
-
-=>> Read the accompanying readme.txt file for more information.  Also, visit the plugin's homepage
-=>> for more information and the latest updates
-
-Installation:
-
-1. Download the file http://www.coffee2code.com/wp-plugins/one-click-close-comments.zip and unzip it into your 
-/wp-content/plugins/ directory (or install via the built-in WordPress plugin installer).
-2. Activate the plugin through the 'Plugins' admin menu in WordPress
-3. When on the 'Edit Posts' or 'Edit Pages' admin pages, click the indicator to toggle the comment status for a post, as necessary
+=>> Read the accompanying readme.txt file for instructions and documentation.
+=>> Also, visit the plugin's homepage for additional information and updates.
+=>> Or visit: http://wordpress.org/extend/plugins/one-click-close-comments/
 
 */
 
 /*
 Copyright (c) 2009-2010 by Scott Reilly (aka coffee2code)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation 
-files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
 modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the 
 Software is furnished to do so, subject to the following conditions:
 
@@ -52,7 +37,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-if ( !class_exists('OneClickCloseComments') ) :
+if ( is_admin() && !class_exists( 'OneClickCloseComments' ) ) :
 
 class OneClickCloseComments {
 	var $css_class = 'comment_state';
@@ -70,17 +55,10 @@ class OneClickCloseComments {
 	 */
 	function OneClickCloseComments() {
 		global $pagenow;
-		if ( !is_admin() || !in_array($pagenow, array('admin-ajax.php', 'edit.php', 'edit-pages.php')) )
+		if ( !in_array( $pagenow, array( 'admin-ajax.php', 'edit.php', 'edit-pages.php' ) ) )
 			return;
 
-		add_action('init', array(&$this, 'init'));
-		add_action('admin_head', array(&$this, 'add_css'));
-		add_action('admin_footer', array(&$this, 'add_js'));
-		add_filter('manage_posts_columns', array(&$this, 'add_post_column'));
-		add_action('manage_posts_custom_column', array(&$this, 'handle_column_data'), 10, 2);
-		add_filter('manage_pages_columns', array(&$this, 'add_post_column'));
-		add_action('manage_pages_custom_column', array(&$this, 'handle_column_data'), 10, 2);
-		add_action('wp_ajax_'.$this->field, array(&$this, 'toggle_comment_status'));
+		add_action( 'init', array( &$this, 'init' ) );
 	}
 
 	/**
@@ -89,8 +67,16 @@ class OneClickCloseComments {
 	 * @return void
 	 */
 	function init() {
-		load_plugin_textdomain( $this->textdomain, false, basename(dirname(__FILE__)) );
+		load_plugin_textdomain( $this->textdomain, false, basename( dirname( __FILE__ ) ) );
 		$this->load_config();
+
+		add_action( 'admin_head', array( &$this, 'add_css' ) );
+		add_action( 'admin_footer', array( &$this, 'add_js' ) );
+		add_filter( 'manage_posts_columns', array( &$this, 'add_post_column' ) );
+		add_action( 'manage_posts_custom_column', array( &$this, 'handle_column_data' ), 10, 2 );
+		add_filter( 'manage_pages_columns', array( &$this, 'add_post_column' ) );
+		add_action( 'manage_pages_custom_column', array( &$this, 'handle_column_data' ), 10, 2 );
+		add_action( 'wp_ajax_'.$this->field, array( &$this, 'toggle_comment_status' ) );
 	}
 
 	/**
@@ -100,11 +86,11 @@ class OneClickCloseComments {
 	 */
 	function load_config() {
 		$this->help_text = array(
-			0 => __('Comments are closed. Click to open.', $this->textdomain),
-			1 => __('Comments are open. Click to close.', $this->textdomain)
+			0 => __( 'Comments are closed. Click to open.', $this->textdomain ),
+			1 => __( 'Comments are open. Click to close.', $this->textdomain )
 		);
 		$this->field_title = '';
-		$this->click_char = apply_filters('one-click-close-comments-click-char', '&bull;');
+		$this->click_char = apply_filters( 'one-click-close-comments-click-char', '&bull;' );
 	}
 
 	/**
@@ -113,14 +99,14 @@ class OneClickCloseComments {
 	 * @return void
 	 */
 	function toggle_comment_status() {
-		$post_id = isset($_POST['post_id']) ? $_POST['post_id'] : null;
+		$post_id = isset( $_POST['post_id'] ) ? $_POST['post_id'] : null;
 		check_ajax_referer( $this->field );
-		if ( $post_id && current_user_can('edit_post', $post_id) ) {
-			$post = get_post($post_id);
+		if ( $post_id && current_user_can( 'edit_post', $post_id ) ) {
+			$post = get_post( $post_id );
 			if ( $post ) {
 				global $wpdb;
 				$new_status = ( 'open' == $post->comment_status ? 'closed' : 'open' );
-				$wpdb->query( $wpdb->prepare("UPDATE $wpdb->posts SET comment_status = %s WHERE ID = %d", $new_status, $post_id) );
+				$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->posts SET comment_status = %s WHERE ID = %d", $new_status, $post_id ) );
 				echo ( 'open' == $new_status ? '1' : '0' );
 			}
 		}
@@ -135,11 +121,12 @@ class OneClickCloseComments {
 	 */
 	function add_post_column( $posts_columns ) {
 		// Insert column just before the comments count column.  If that column isn't visible to user, put at end.
-		if ( array_key_exists('comments', $posts_columns) ) {
+		if ( array_key_exists( 'comments', $posts_columns ) ) {
 			// Damn PHP for not facilitating this.
 			$new_cols = array();
 			foreach ( $posts_columns as $k => $v ) {
-				if ( $k == 'comments' ) { $new_cols[$this->field] = $this->field_title; }
+				if ( $k == 'comments' )
+					$new_cols[$this->field] = $this->field_title;
 				$new_cols[$k] = $v;
 			}
 			$posts_columns = $new_cols;
@@ -157,14 +144,16 @@ class OneClickCloseComments {
 	 * @return void
 	 */
 	function handle_column_data( $column_name, $post_id ) {
-		$post = get_post($post_id);
+		$post = get_post( $post_id );
 		if ( $this->field == $column_name ) {
-			$auth = current_user_can('edit_post', $post_id);
-			$state = ('open' == $post->comment_status ? 1 : 0);
+			$auth = current_user_can( 'edit_post', $post_id );
+			$state = ( 'open' == $post->comment_status ? 1 : 0 );
 
-			if ( $auth ) echo "<span title='" . esc_attr($this->help_text[$state]) . "'>";
-			echo "<span id='" . wp_create_nonce($this->field) . "' class='{$this->css_class}-{$state}'>{$this->click_char}</span>";
-			if ( $auth ) echo '</span>';
+			if ( $auth )
+				echo "<span title='" . esc_attr( $this->help_text[$state] ) . "'>";
+			echo "<span id='" . wp_create_nonce( $this->field ) . "' class='{$this->css_class}-{$state}'>{$this->click_char}</span>";
+			if ( $auth )
+				echo '</span>';
 			return;
 		}
 	}
@@ -193,7 +182,7 @@ CSS;
 	 * @return void (Text is echoed; nothing is returned)
 	 */
 	function add_js() {
-		$ajax_url = admin_url('admin-ajax.php');
+		$ajax_url = admin_url( 'admin-ajax.php' );
 
 		echo <<<JS
 		<script type="text/javascript">
@@ -235,9 +224,8 @@ JS;
 	}
 } // end OneClickCloseComments
 
-endif; // end if !class_exists()
+$GLOBALS['c2c_one_click_close_comments']  = new OneClickCloseComments();
 
-if ( class_exists('OneClickCloseComments') )
-	new OneClickCloseComments();
+endif; // end if !class_exists()
 
 ?>

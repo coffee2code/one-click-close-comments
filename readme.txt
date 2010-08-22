@@ -3,11 +3,12 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
 Requires at least: 2.8
-Tested up to: 2.9.1
-Stable tag: 2.0
-Version: 2.0
+Tested up to: 3.0.1
+Stable tag: 2.0.1
+Version: 2.0.1
 
 Conveniently close or open comments for a post or page with one click.
+
 
 == Description ==
 
@@ -16,8 +17,6 @@ Conveniently close or open comments for a post or page with one click.
 From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user can close or open comments to any posts to which they have sufficient privileges to make such changes (essentially admins and post authors for their own posts).  This is done via an AJAX-powered color-coded indicator.  The color-coding gives instant feedback on the current status of the post for comments: green means the post/page is open to comments, red means the post/page is closed to comments.  Being AJAX-powered means that the change is submitted in the background without requiring a page reload.
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
-
-KNOWN ISSUE: After using the 'Quick Edit' for a post, the one click close button for that post no longer works until a page refresh (the button still appears and properly reflect the current status, though).
 
 
 == Installation ==
@@ -33,7 +32,7 @@ KNOWN ISSUE: After using the 'Quick Edit' for a post, the one click close button
 
 The commenting status link/button is only clickable is you have JavaScript enabled.
 
-= What does the color-coding of the dot mean?
+= What does the color-coding of the dot mean? =
 
 Green means the post is currently open for comments; red means the post is not currently open for comments.
 
@@ -54,6 +53,16 @@ By default, commenting status is represented using the `&bull;` character.  You 
 
 
 == Changelog ==
+
+= 2.0.1 =
+* Don't even define class unless in the admin section of site
+* Store plugin instance in global variable, $c2c_one_click_close_comments, to allow for external manipulation
+* Move registering actions and filters into init()
+* Remove docs from top of plugin file (all that and more are in readme.txt)
+* Note compatibility with WP 3.0+
+* Minor tweaks to code formatting (spacing)
+* Add Upgrade Notice section to readme.txt
+* Remove trailing whitespace
 
 = 2.0 =
 * Display commenting status even if JS is disabled
@@ -79,3 +88,9 @@ By default, commenting status is represented using the `&bull;` character.  You 
 
 = 1.0 =
 * Initial release
+
+
+== Upgrade Notice ==
+
+= 2.0.1 =
+Minor update. Highlights: verified WP 3.0 compatibility.
