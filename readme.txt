@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
 Requires at least: 2.8
-Tested up to: 3.0.1
-Stable tag: 2.0.1
-Version: 2.0.1
+Tested up to: 3.1
+Stable tag: 2.1
+Version: 2.1
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -17,6 +17,8 @@ Conveniently close or open comments for a post or page with one click.
 From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user can close or open comments to any posts to which they have sufficient privileges to make such changes (essentially admins and post authors for their own posts).  This is done via an AJAX-powered color-coded indicator.  The color-coding gives instant feedback on the current status of the post for comments: green means the post/page is open to comments, red means the post/page is closed to comments.  Being AJAX-powered means that the change is submitted in the background without requiring a page reload.
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
+
+Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Author Homepage]:(http://coffee2code.com)
 
 
 == Installation ==
@@ -42,9 +44,9 @@ You can customize the colors via CSS.  `.comment-state-1` indicates comments are
 
 = How can I customize the dot used to represent commenting status? =
 
-By default, commenting status is represented using the `&bull;` character.  You can change this by filtering `one-click-close-comments-click-char`.  Here's an example -- added to a theme's functions.php file -- to change it to a solid diamond:
+By default, commenting status is represented using the `&bull;` character.  You can change this by filtering `c2c_one_click_close_comments_click_char`.  Here's an example -- added to a theme's functions.php file -- to change it to a solid diamond:
 
-`add_filter( 'one-click-close-comments-click-char', create_function('$a', 'return "&diams";') );`
+`add_filter( 'c2c_one_click_close_comments_click_char', create_function('$a', 'return "&diams";') );`
 
 
 == Screenshots ==
@@ -52,7 +54,37 @@ By default, commenting status is represented using the `&bull;` character.  You 
 1. A screenshot of the 'Edit Posts' admin page with the plugin activated.
 
 
+== Filters ==
+
+The plugin exposes one action for hooking.
+
+= c2c_one_click_close_comments_click_char (action) =
+
+The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character or string as the plugin's indicator in the posts listing tables.  It is the character that get color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status.  By default this is a bullet, `&bull;` (a solid circle).
+
+Arguments:
+
+* $char (array): The character to be used for display (by default this is `&bull;`).
+
+Example:
+
+`add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
+function custom_one_click_char( $char ) {
+	return '&diams;';  // Use a diamond character instead of the bullet
+}`
+
+
 == Changelog ==
+
+= 2.1 =
+* Switch from object instantiation to direct class function invocation
+* Rename the class from 'OneClickCloseComments' to 'c2c_OneClickCloseComments'
+* Declare all class methods public static and class variables private static
+* Output JS via 'admin_print_footer_scripts' action instead of 'admin_footer' action
+* Rename filter from 'one-click-close-comments-click-char' to 'c2c_one_click_close_comments_click_char'
+* Add Filters section to readme.txt
+* Note compatibility through WP 3.1+
+* Update copyright date (2011)
 
 = 2.0.1 =
 * Don't even define class unless in the admin section of site
@@ -92,5 +124,8 @@ By default, commenting status is represented using the `&bull;` character.  You 
 
 == Upgrade Notice ==
 
+= 2.1 =
+Minor update: renamed class, added Filters section to readme.txt, noted compatibility with WP 3.1+, and updated copyright date.
+
 = 2.0.1 =
-Minor update. Highlights: verified WP 3.0 compatibility.
+Minor update. Highlights: renamed class; minor non-functionality tweaks; verified WP 3.0 compatibility.
