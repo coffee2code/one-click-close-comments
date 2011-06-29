@@ -2,18 +2,18 @@
 /**
  * @package One_Click_Close_Comments
  * @author Scott Reilly
- * @version 2.1
+ * @version 2.1.1
  */
 /*
 Plugin Name: One Click Close Comments
-Version: 2.1
+Version: 2.1.1
 Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Text Domain: one-click-close-comments
 Description: Conveniently close or open comments for a post or page with one click.
 
-Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+.
+Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -37,7 +37,7 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRA
 IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-if ( is_admin() && !class_exists( 'c2c_OneClickCloseComments' ) ) :
+if ( is_admin() && ! class_exists( 'c2c_OneClickCloseComments' ) ) :
 
 class c2c_OneClickCloseComments {
 	private static $css_class   = 'comment_state';
@@ -55,7 +55,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function init() {
 		global $pagenow;
-		if ( !in_array( $pagenow, array( 'admin-ajax.php', 'edit.php', 'edit-pages.php' ) ) )
+		if ( ! in_array( $pagenow, array( 'admin-ajax.php', 'edit.php', 'edit-pages.php' ) ) )
 			return;
 
 		add_action( 'init', array( __CLASS__, 'do_init' ) );

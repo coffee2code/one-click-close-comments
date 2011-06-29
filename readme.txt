@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
 Requires at least: 2.8
-Tested up to: 3.1
-Stable tag: 2.1
-Version: 2.1
+Tested up to: 3.2
+Stable tag: 2.1.1
+Version: 2.1.1
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -18,7 +18,7 @@ From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user 
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
 
-Links: [Plugin Homepage]:(http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Author Homepage]:(http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -68,13 +68,20 @@ Arguments:
 
 Example:
 
-`add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
+`
+add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
 function custom_one_click_char( $char ) {
 	return '&diams;';  // Use a diamond character instead of the bullet
-}`
+}
+`
 
 
 == Changelog ==
+
+= 2.1.1 =
+* Note compatibility through WP 3.2+
+* Minor code formatting changes (spacing)
+* Fix plugin homepage and author links in description in readme.txt
 
 = 2.1 =
 * Switch from object instantiation to direct class function invocation
