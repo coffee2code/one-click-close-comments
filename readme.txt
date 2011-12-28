@@ -3,9 +3,9 @@ Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
 Requires at least: 2.8
-Tested up to: 3.2
-Stable tag: 2.1.1
-Version: 2.1.1
+Tested up to: 3.3
+Stable tag: 2.2
+Version: 2.2
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -18,7 +18,7 @@ From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user 
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Plugin Directory Page](http://wordpress.org/extend/plugins/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -51,7 +51,7 @@ By default, commenting status is represented using the `&bull;` character.  You 
 
 == Screenshots ==
 
-1. A screenshot of the 'Edit Posts' admin page with the plugin activated.
+1. A screenshot of the 'Edit Posts' admin page with the plugin activated. (The full tool-tip reads: "Comments are closed. Click to open.")
 
 
 == Filters ==
@@ -77,6 +77,16 @@ function custom_one_click_char( $char ) {
 
 
 == Changelog ==
+
+= 2.2 =
+* Increase font size for click character to make a larger click target
+* Hook 'load-edit.php' action to initialize plugin rather than using pagenow
+* Create 'lang' subdirectory and move .pot file into it
+* Regenerate .pot
+* Add 'Domain Path' directive to top of main plugin file
+* Add link to plugin directory page to readme.txt
+* Update screenshot for WP 3.3
+* Update copyright date (2012)
 
 = 2.1.1 =
 * Note compatibility through WP 3.2+
@@ -130,6 +140,9 @@ function custom_one_click_char( $char ) {
 
 
 == Upgrade Notice ==
+
+= 2.2 =
+Recommended update. Increased size of button for closing comments; noted WP 3.3 compatibility; and more.
 
 = 2.1 =
 Minor update: renamed class, added Filters section to readme.txt, noted compatibility with WP 3.1+, and updated copyright date.

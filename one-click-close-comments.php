@@ -2,18 +2,19 @@
 /**
  * @package One_Click_Close_Comments
  * @author Scott Reilly
- * @version 2.1.1
+ * @version 2.2
  */
 /*
 Plugin Name: One Click Close Comments
-Version: 2.1.1
+Version: 2.2
 Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments/
 Author: Scott Reilly
 Author URI: http://coffee2code.com
 Text Domain: one-click-close-comments
+Domain Path: /lang/
 Description: Conveniently close or open comments for a post or page with one click.
 
-Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
+Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+, 3.3+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -22,7 +23,7 @@ Compatible with WordPress 2.8+, 2.9+, 3.0+, 3.1+, 3.2+.
 */
 
 /*
-Copyright (c) 2009-2011 by Scott Reilly (aka coffee2code)
+Copyright (c) 2009-2012 by Scott Reilly (aka coffee2code)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
 files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
@@ -54,11 +55,9 @@ class c2c_OneClickCloseComments {
 	 * @return void
 	 */
 	public static function init() {
-		global $pagenow;
-		if ( ! in_array( $pagenow, array( 'admin-ajax.php', 'edit.php', 'edit-pages.php' ) ) )
-			return;
-
-		add_action( 'init', array( __CLASS__, 'do_init' ) );
+		add_action( 'load-edit.php',         array( __CLASS__, 'do_init' ) );
+		add_action( 'load-edit-pages.php',   array( __CLASS__, 'do_init' ) ); /* backcompat for pre-WP3.1? */
+		add_action( 'wp_ajax_'.self::$field, array( __CLASS__, 'toggle_comment_status' ) );
 	}
 
 	/**
@@ -76,7 +75,6 @@ class c2c_OneClickCloseComments {
 		add_action( 'manage_posts_custom_column', array( __CLASS__, 'handle_column_data' ), 10, 2 );
 		add_filter( 'manage_pages_columns',       array( __CLASS__, 'add_post_column' ) );
 		add_action( 'manage_pages_custom_column', array( __CLASS__, 'handle_column_data' ), 10, 2 );
-		add_action( 'wp_ajax_'.self::$field,      array( __CLASS__, 'toggle_comment_status' ) );
 	}
 
 	/**
@@ -169,10 +167,12 @@ class c2c_OneClickCloseComments {
 		$css_class = self::$css_class;
 		echo <<<CSS
 		<style type="text/css">
-		.column-{$field} { width:1em; }
+		.column-{$field} { width:2em; }
+		.fixed .column-comments { padding-left: 8px; }
 		td.column-{$field} { padding:0; vertical-align:middle; text-align:center;}
-		.{$css_class}-1 { font-size:18px; color:#00ff00; }
-		.{$css_class}-0 { font-size:18px; color:#ff0000; }
+		.{$css_class}-0, .{$css_class}-1 { font-size:42px; text-align:center; }
+		.{$css_class}-1 { color:#00ff00; }
+		.{$css_class}-0 { color:#ff0000; }
 		.click-span { cursor: pointer; }
 		</style>
 
