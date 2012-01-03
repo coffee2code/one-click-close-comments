@@ -80,7 +80,13 @@ function custom_one_click_char( $char ) {
 
 = 2.2 =
 * Increase font size for click character to make a larger click target
+* Fix for one-click character not being clickable for quick-edited post rows
+* Enqueue CSS and JavaScript rather than defining in, and outputting via, PHP
+* Create 'assets' subdirectory and add admin.js and admin.css to it
+* Add enqueue_scripts_and_styles(), register_styles(), enqueue_admin_css(), enqueue_admin_js()
+* Remove add_css(), add_js()
 * Hook 'load-edit.php' action to initialize plugin rather than using pagenow
+* Add version() to return plugin version
 * Create 'lang' subdirectory and move .pot file into it
 * Regenerate .pot
 * Add 'Domain Path' directive to top of main plugin file

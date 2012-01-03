@@ -1,45 +1,42 @@
-# Translation of the WordPress plugin One Click Close Comments 2.0 by Scott Reilly.
-# Copyright (C) 2010 Scott Reilly
-# This file is distributed under the same license as the One Click Close Comments package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
-#
-#, fuzzy
+# Translation of the WordPress plugin One Click Close Comments v2.2 by Scott Reilly.
+# Copyright (C) 2011 Scott Reilly
+# This file is distributed under the same license as the One Click Close Comments plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: One Click Close Comments 2.0\n"
+"Project-Id-Version: One Click Close Comments 2.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/one-click-close-comments\n"
-"POT-Creation-Date: 2010-01-21 11:48-0600\n"
+"POT-Creation-Date: 2012-01-03 05:38:31+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 
-#: one-click-close-comments.php:103
+#: one-click-close-comments.php:116
 msgid "Comments are closed. Click to open."
 msgstr ""
 
-#: one-click-close-comments.php:104
+#: one-click-close-comments.php:117
 msgid "Comments are open. Click to close."
 msgstr ""
 
-#. Plugin Name of an extension
+#. Plugin Name of the plugin/theme
 msgid "One Click Close Comments"
 msgstr ""
 
-#. Plugin URI of an extension
-msgid "http://coffee2code.com/wp-plugins/one-click-close-comments"
+#. Plugin URI of the plugin/theme
+msgid "http://coffee2code.com/wp-plugins/one-click-close-comments/"
 msgstr ""
 
-#. Description of an extension
+#. Description of the plugin/theme
 msgid "Conveniently close or open comments for a post or page with one click."
 msgstr ""
 
-#. Author of an extension
+#. Author of the plugin/theme
 msgid "Scott Reilly"
 msgstr ""
 
-#. Author URI of an extension
-msgid "http://coffee2code.com"
+#. Author URI of the plugin/theme
+msgid "http://coffee2code.com/"
 msgstr ""
