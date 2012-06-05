@@ -2,10 +2,12 @@
 Contributors: coffee2code
 Donate link: http://coffee2code.com/donate
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.3
-Stable tag: 2.2
-Version: 2.2
+Tested up to: 3.4
+Stable tag: 2.2.1
+Version: 2.2.1
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -78,8 +80,15 @@ function custom_one_click_char( $char ) {
 
 == Changelog ==
 
+= 2.2.1 =
+* Re-license as GPLv2 or later (from X11)
+* Add 'License' and 'License URI' header tags to readme.txt and plugin file
+* Add banner image for plugin page
+* Remove ending PHP close tag
+* Note compatibility through WP 3.4+
+
 = 2.2 =
-* Increase font size for click character to make a larger click target
+* Increase font size for click character to make it a larger click target
 * Fix for one-click character not being clickable for quick-edited post rows
 * Enqueue CSS and JavaScript rather than defining in, and outputting via, PHP
 * Create 'assets' subdirectory and add admin.js and admin.css to it
@@ -89,6 +98,7 @@ function custom_one_click_char( $char ) {
 * Add version() to return plugin version
 * Create 'lang' subdirectory and move .pot file into it
 * Regenerate .pot
+* Note compatibility through WP 3.3+
 * Add 'Domain Path' directive to top of main plugin file
 * Add link to plugin directory page to readme.txt
 * Update screenshot for WP 3.3
@@ -146,6 +156,9 @@ function custom_one_click_char( $char ) {
 
 
 == Upgrade Notice ==
+
+= 2.2.1 =
+Trivial update: noted compatibility through WP 3.4+; explicitly stated license
 
 = 2.2 =
 Recommended update. Increased size of button for closing comments; noted WP 3.3 compatibility; and more.
