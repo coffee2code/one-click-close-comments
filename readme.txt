@@ -5,9 +5,9 @@ Tags: comments, close comments, open comments, admin, comment, discussion, comme
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.4
-Stable tag: 2.2.1
-Version: 2.2.1
+Tested up to: 3.5
+Stable tag: 2.3
+Version: 2.3
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -79,6 +79,14 @@ function custom_one_click_char( $char ) {
 
 
 == Changelog ==
+
+= 2.3 =
+* Use string instead of variable to specify translation textdomain
+* Remove load_config() and merge its contents into do_init()
+* Add check to prevent execution of code if file is directly accessed
+* Note compatibility through WP 3.5+
+* Update copyright date (2013)
+* Move screenshot into repo's assets directory
 
 = 2.2.1 =
 * Re-license as GPLv2 or later (from X11)
@@ -156,6 +164,9 @@ function custom_one_click_char( $char ) {
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+Minor update: a few internals changes; noted compatibility through WP 3.5+
 
 = 2.2.1 =
 Trivial update: noted compatibility through WP 3.4+; explicitly stated license

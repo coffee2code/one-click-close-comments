@@ -2,11 +2,11 @@
 /**
  * @package One_Click_Close_Comments
  * @author Scott Reilly
- * @version 2.2.1
+ * @version 2.3
  */
 /*
 Plugin Name: One Click Close Comments
-Version: 2.2.1
+Version: 2.3
 Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments/
 Author: Scott Reilly
 Author URI: http://coffee2code.com/
@@ -16,7 +16,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Conveniently close or open comments for a post or page with one click.
 
-Compatible with WordPress 2.8 through 3.4+.
+Compatible with WordPress 2.8 through 3.5+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
@@ -27,7 +27,7 @@ TODO:
 */
 
 /*
-	Copyright (c) 2009-2012 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2013 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -44,13 +44,14 @@ TODO:
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
+defined( 'ABSPATH' ) or die();
+
 if ( is_admin() && ! class_exists( 'c2c_OneClickCloseComments' ) ) :
 
 class c2c_OneClickCloseComments {
 	private static $css_class   = 'comment_state'; /* Changing this requires changing .css and .js files */
 	private static $field       = 'close_comments'; /* Changing this requires changing .css and .js files */
 	private static $nonce_field = 'update-close_comments';
-	private static $textdomain  = 'one-click-close-comments';
 	private static $field_title = '';
 	private static $click_char  = '';
 	private static $help_text   = array();
@@ -63,7 +64,7 @@ class c2c_OneClickCloseComments {
 	 * @return string Version number as string
 	 */
 	public static function version() {
-		return '2.2';
+		return '2.3';
 	}
 
 	/**
@@ -88,9 +89,20 @@ class c2c_OneClickCloseComments {
 	 * @return void
 	 */
 	public static function do_init() {
-		load_plugin_textdomain( self::$textdomain, false, basename( dirname( __FILE__ ) ) );
-		self::load_config();
 
+		// Load textdomain
+		load_plugin_textdomain( 'one-click-close-comments', false, basename( dirname( __FILE__ ) ) );
+
+		// Set translatable and filterable strings
+		self::$help_text = array(
+			0 => __( 'Comments are closed. Click to open.', 'one-click-close-comments' ),
+			1 => __( 'Comments are open. Click to close.', 'one-click-close-comments' )
+		);
+		self::$field_title = '';
+		self::$click_char = apply_filters( 'one-click-close-comments-click-char', '&bull;' ); /* Deprecated! */
+		self::$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', self::$click_char );
+
+		// Register hooks
 		add_filter( 'manage_posts_columns',       array( __CLASS__, 'add_post_column' ) );
 		add_action( 'manage_posts_custom_column', array( __CLASS__, 'handle_column_data' ), 10, 2 );
 		add_filter( 'manage_pages_columns',       array( __CLASS__, 'add_post_column' ) );
@@ -108,21 +120,6 @@ class c2c_OneClickCloseComments {
 		// Register and enqueue styles for admin page
 		self::register_styles();
 		add_action( 'admin_enqueue_scripts',      array( __CLASS__, 'enqueue_admin_css' ) );
-	}
-
-	/**
-	 * Initializes the plugin's configuration and localizable text variables.
-	 *
-	 * @return void
-	 */
-	public static function load_config() {
-		self::$help_text = array(
-			0 => __( 'Comments are closed. Click to open.', self::$textdomain ),
-			1 => __( 'Comments are open. Click to close.', self::$textdomain )
-		);
-		self::$field_title = '';
-		self::$click_char = apply_filters( 'one-click-close-comments-click-char', '&bull;' ); /* Deprecated! */
-		self::$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', self::$click_char );
 	}
 
 	/**
