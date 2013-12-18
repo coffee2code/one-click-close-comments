@@ -2,11 +2,11 @@
 /**
  * @package One_Click_Close_Comments
  * @author Scott Reilly
- * @version 2.3
+ * @version 2.3.1
  */
 /*
 Plugin Name: One Click Close Comments
-Version: 2.3
+Version: 2.3.1
 Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments/
 Author: Scott Reilly
 Author URI: http://coffee2code.com/
@@ -16,18 +16,18 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Description: Conveniently close or open comments for a post or page with one click.
 
-Compatible with WordPress 2.8 through 3.5+.
+Compatible with WordPress 2.8 through 3.8+.
 
 =>> Read the accompanying readme.txt file for instructions and documentation.
 =>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/extend/plugins/one-click-close-comments/
+=>> Or visit: http://wordpress.org/plugins/one-click-close-comments/
 
 TODO:
 	* Add template tag (or inject via filter) an AJAX link for admins (and post authors) to close link from the front-end
 */
 
 /*
-	Copyright (c) 2009-2013 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2014 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -64,7 +64,7 @@ class c2c_OneClickCloseComments {
 	 * @return string Version number as string
 	 */
 	public static function version() {
-		return '2.3';
+		return '2.3.1';
 	}
 
 	/**
@@ -155,12 +155,12 @@ class c2c_OneClickCloseComments {
 			$new_cols = array();
 			foreach ( $posts_columns as $k => $v ) {
 				if ( $k == 'comments' )
-					$new_cols[self::$field] = self::$field_title;
-				$new_cols[$k] = $v;
+					$new_cols[ self::$field ] = self::$field_title;
+				$new_cols[ $k ] = $v;
 			}
 			$posts_columns = $new_cols;
 		} else {
-			$posts_columns[self::$field] = self::$field_title;
+			$posts_columns[ self::$field ] = self::$field_title;
 		}
 		return $posts_columns;
 	}
@@ -179,7 +179,7 @@ class c2c_OneClickCloseComments {
 			$state = ( 'open' == $post->comment_status ? 1 : 0 );
 
 			if ( $auth )
-				echo "<span title='" . esc_attr( self::$help_text[$state] ) . "'>";
+				echo "<span title='" . esc_attr( self::$help_text[ $state ] ) . "'>";
 			echo "<span id='" . wp_create_nonce( self::$field ) . "' class='" . self::$css_class . "-{$state}'>" . self::$click_char . '</span>';
 			if ( $auth )
 				echo '</span>';
