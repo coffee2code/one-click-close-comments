@@ -5,19 +5,19 @@ Tags: comments, close comments, open comments, admin, comment, discussion, comme
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 3.8
-Stable tag: 2.3.1
+Tested up to: 4.1
+Stable tag: 2.3.2
 
 Conveniently close or open comments for a post or page with one click.
 
 
 == Description ==
 
-From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user can close or open comments to any posts to which they have sufficient privileges to make such changes (essentially admins and post authors for their own posts).  This is done via an AJAX-powered color-coded indicator.  The color-coding gives instant feedback on the current status of the post for comments: green means the post/page is open to comments, red means the post/page is closed to comments.  Being AJAX-powered means that the change is submitted in the background without requiring a page reload.
+From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user can close or open comments to any posts to which they have sufficient privileges to make such changes (essentially admins and post authors for their own posts). This is done via an AJAX-powered color-coded indicator. The color-coding gives instant feedback on the current status of the post for comments: green means the post/page is open to comments, red means the post/page is closed to comments. Being AJAX-powered means that the change is submitted in the background without requiring a page reload.
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Plugin Directory Page](http://wordpress.org/plugins/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Plugin Directory Page](https://wordpress.org/plugins/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -39,11 +39,11 @@ Green means the post is currently open for comments; red means the post is not c
 
 = How can I customize the color-coding used for the dot? =
 
-You can customize the colors via CSS.  `.comment-state-1` indicates comments are open.  `.comment-state-0` indicates comments are closed.
+You can customize the colors via CSS. `.comment-state-1` indicates comments are open. `.comment-state-0` indicates comments are closed.
 
 = How can I customize the dot used to represent commenting status? =
 
-By default, commenting status is represented using the `&bull;` character.  You can change this by filtering `c2c_one_click_close_comments_click_char`.  Here's an example -- added to a theme's functions.php file -- to change it to a solid diamond:
+By default, commenting status is represented using the `&bull;` character. You can change this by filtering `c2c_one_click_close_comments_click_char`. Here's an example -- added to a theme's functions.php file -- to change it to a solid diamond:
 
 `add_filter( 'c2c_one_click_close_comments_click_char', create_function('$a', 'return "&diams";') );`
 
@@ -59,7 +59,7 @@ The plugin exposes one action for hooking.
 
 = c2c_one_click_close_comments_click_char (action) =
 
-The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character or string as the plugin's indicator in the posts listing tables.  It is the character that get color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status.  By default this is a bullet, `&bull;` (a solid circle).
+The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character or string as the plugin's indicator in the posts listing tables. It is the character that get color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. By default this is a bullet, `&bull;` (a solid circle).
 
 Arguments:
 
@@ -68,14 +68,31 @@ Arguments:
 Example:
 
 `
-add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
+/**
+ * Changes the character used as the one-click link to a diamond.
+ *
+ * @param string $char The default character (a bullet)
+ * @return string
+ */
 function custom_one_click_char( $char ) {
-	return '&diams;';  // Use a diamond character instead of the bullet
+	return '&diams;';
 }
+add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
 `
 
 
 == Changelog ==
+
+= 2.3.2 (2015-02-18) =
+* Reformat plugin header
+* Use __DIR__ instead of `dirname(__FILE__)`
+* Minor code reformatting (spacing, bracing)
+* Minor documentation spacing changes throughout
+* Change documentation links to wp.org to be https
+* Note compatibility through WP 4.1+
+* Update copyright date (2015)
+* Add plugin icon
+* Rengenerate .pot
 
 = 2.3.1 =
 * Minor code tweaks (spacing)
@@ -169,6 +186,9 @@ function custom_one_click_char( $char ) {
 
 
 == Upgrade Notice ==
+
+= 2.3.2 =
+Trivial update: noted compatibility through WP 4.1+; added plugin icon
 
 = 2.3.1 =
 Trivial update: updated banner and screenshot images; noted compatibility through WP 3.8+

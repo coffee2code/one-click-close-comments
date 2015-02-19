@@ -1,33 +1,33 @@
 <?php
 /**
+ * Plugin Name: One Click Close Comments
+ * Version:     2.3.2
+ * Plugin URI:  http://coffee2code.com/wp-plugins/one-click-close-comments/
+ * Author:      Scott Reilly
+ * Author URI:  http://coffee2code.com/
+ * Text Domain: one-click-close-comments
+ * Domain Path: /lang/
+ * License:     GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Description: Conveniently close or open comments for a post or page with one click.
+ *
+ * Compatible with WordPress 2.8 through 4.1+.
+ *
+ * =>> Read the accompanying readme.txt file for instructions and documentation.
+ * =>> Also, visit the plugin's homepage for additional information and updates.
+ * =>> Or visit: https://wordpress.org/plugins/one-click-close-comments/
+ *
+ * TODO:
+ * - Add template tag (or inject via filter) an AJAX link for admins (and post authors) to close link from the front-end
+ * - Unit tests
+ *
  * @package One_Click_Close_Comments
  * @author Scott Reilly
- * @version 2.3.1
+ * @version 2.3.2
  */
-/*
-Plugin Name: One Click Close Comments
-Version: 2.3.1
-Plugin URI: http://coffee2code.com/wp-plugins/one-click-close-comments/
-Author: Scott Reilly
-Author URI: http://coffee2code.com/
-Text Domain: one-click-close-comments
-Domain Path: /lang/
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Description: Conveniently close or open comments for a post or page with one click.
-
-Compatible with WordPress 2.8 through 3.8+.
-
-=>> Read the accompanying readme.txt file for instructions and documentation.
-=>> Also, visit the plugin's homepage for additional information and updates.
-=>> Or visit: http://wordpress.org/plugins/one-click-close-comments/
-
-TODO:
-	* Add template tag (or inject via filter) an AJAX link for admins (and post authors) to close link from the front-end
-*/
 
 /*
-	Copyright (c) 2009-2014 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2015 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -64,13 +64,11 @@ class c2c_OneClickCloseComments {
 	 * @return string Version number as string
 	 */
 	public static function version() {
-		return '2.3.1';
+		return '2.3.2';
 	}
 
 	/**
 	 * Handles installation tasks, such as ensuring plugin options are instantiated and saved to options table.
-	 *
-	 * @return void
 	 */
 	public static function init() {
 		add_action( 'load-edit.php',         array( __CLASS__, 'do_init' ) );
@@ -79,21 +77,19 @@ class c2c_OneClickCloseComments {
 		add_action( 'load-edit-pages.php',   array( __CLASS__, 'enqueue_scripts_and_styles' ) ); /* backcompat for pre-WP3.1ish */
 		add_action( 'wp_ajax_'.self::$field, array( __CLASS__, 'toggle_comment_status' ) );
 
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'inline-save' == $_REQUEST['action'] )
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'inline-save' == $_REQUEST['action'] ) {
 			add_action( 'admin_init',        array( __CLASS__, 'do_init' ) );
+		}
 	}
 
 	/**
 	 * Handles actions to be hooked to 'init' action, such as loading text domain and loading plugin config data array.
-	 *
-	 * @return void
 	 */
 	public static function do_init() {
+		// Load textdomain.
+		load_plugin_textdomain( 'one-click-close-comments', false, basename( __DIR__ ) );
 
-		// Load textdomain
-		load_plugin_textdomain( 'one-click-close-comments', false, basename( dirname( __FILE__ ) ) );
-
-		// Set translatable and filterable strings
+		// Set translatable and filterable strings.
 		self::$help_text = array(
 			0 => __( 'Comments are closed. Click to open.', 'one-click-close-comments' ),
 			1 => __( 'Comments are open. Click to close.', 'one-click-close-comments' )
@@ -102,7 +98,7 @@ class c2c_OneClickCloseComments {
 		self::$click_char = apply_filters( 'one-click-close-comments-click-char', '&bull;' ); /* Deprecated! */
 		self::$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', self::$click_char );
 
-		// Register hooks
+		// Register hooks.
 		add_filter( 'manage_posts_columns',       array( __CLASS__, 'add_post_column' ) );
 		add_action( 'manage_posts_custom_column', array( __CLASS__, 'handle_column_data' ), 10, 2 );
 		add_filter( 'manage_pages_columns',       array( __CLASS__, 'add_post_column' ) );
@@ -115,17 +111,15 @@ class c2c_OneClickCloseComments {
 	 * @since 2.2
 	 */
 	public static function enqueue_scripts_and_styles() {
-		// Enqueues JS for admin page
+		// Enqueues JS for admin page.
 		add_action( 'admin_enqueue_scripts',      array( __CLASS__, 'enqueue_admin_js' ) );
-		// Register and enqueue styles for admin page
+		// Register and enqueue styles for admin page.
 		self::register_styles();
 		add_action( 'admin_enqueue_scripts',      array( __CLASS__, 'enqueue_admin_css' ) );
 	}
 
 	/**
 	 * AJAX responder to toggle the comment status for a post (if user if authorized to do so).
-	 *
-	 * @return void
 	 */
 	public static function toggle_comment_status() {
 		$post_id = isset( $_POST['post_id'] ) ? $_POST['post_id'] : null;
@@ -139,13 +133,13 @@ class c2c_OneClickCloseComments {
 				echo ( 'open' == $new_status ? '1' : '0' );
 			}
 		}
-		die();
+		exit;
 	}
 
 	/**
 	 * Adds a column for the one-click close button to the table of posts in the admin.
 	 *
-	 * @param array $posts_columns Array of post column titles.
+	 * @param array  $posts_columns Array of post column titles.
 	 * @return array The $posts_columns array with the one-click close comment column's title added.
 	 */
 	public static function add_post_column( $posts_columns ) {
@@ -154,14 +148,16 @@ class c2c_OneClickCloseComments {
 			// Damn PHP for not facilitating this.
 			$new_cols = array();
 			foreach ( $posts_columns as $k => $v ) {
-				if ( $k == 'comments' )
+				if ( $k == 'comments' ) {
 					$new_cols[ self::$field ] = self::$field_title;
+				}
 				$new_cols[ $k ] = $v;
 			}
 			$posts_columns = $new_cols;
 		} else {
 			$posts_columns[ self::$field ] = self::$field_title;
 		}
+
 		return $posts_columns;
 	}
 
@@ -169,8 +165,7 @@ class c2c_OneClickCloseComments {
 	 * Outputs the one-click close button for each post listed in the post listing table in the admin.
 	 *
 	 * @param string $column_name The name of the column.
-	 * @param int $post_id The id of the post being displayed.
-	 * @return void
+	 * @param int    $post_id     The id of the post being displayed.
 	 */
 	public static function handle_column_data( $column_name, $post_id ) {
 		$post = get_post( $post_id );
@@ -178,11 +173,13 @@ class c2c_OneClickCloseComments {
 			$auth = current_user_can( 'edit_post', $post_id );
 			$state = ( 'open' == $post->comment_status ? 1 : 0 );
 
-			if ( $auth )
+			if ( $auth ) {
 				echo "<span title='" . esc_attr( self::$help_text[ $state ] ) . "'>";
+			}
 			echo "<span id='" . wp_create_nonce( self::$field ) . "' class='" . self::$css_class . "-{$state}'>" . self::$click_char . '</span>';
-			if ( $auth )
+			if ( $auth ) {
 				echo '</span>';
+			}
 			return;
 		}
 	}
