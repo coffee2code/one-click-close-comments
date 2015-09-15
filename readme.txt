@@ -5,8 +5,8 @@ Tags: comments, close comments, open comments, admin, comment, discussion, comme
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 4.1
-Stable tag: 2.3.3
+Tested up to: 4.3
+Stable tag: 2.3.4
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -82,6 +82,10 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 
 == Changelog ==
+
+= 2.3.4 (2015-09-15) =
+* Bugfix: Really revert back to using `dirname(__FILE__)`; __DIR__ is only PHP 5.3+
+* Change: Note compatibility through WP 4.3+.
 
 = 2.3.3 (2015-03-12) =
 * Revert back to using `dirname(__FILE__)`; __DIR__ is only PHP 5.3+
@@ -189,6 +193,9 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 
 == Upgrade Notice ==
+
+= 2.3.4 =
+Minor bugfix release for users running PHP 5.2.x: revert use of a constant only defined in PHP 5.3+. You really should upgrade your PHP or your host if this affects you. Also noted compatibility with WP 4.3+.
 
 = 2.3.3 =
 Minor bugfix release for users running PHP 5.2.x: revert use of a constant only defined in PHP 5.3+. You really should upgrade your PHP or your host if this affects you.

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: One Click Close Comments
- * Version:     2.3.3
+ * Version:     2.3.4
  * Plugin URI:  http://coffee2code.com/wp-plugins/one-click-close-comments/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -11,7 +11,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Conveniently close or open comments for a post or page with one click.
  *
- * Compatible with WordPress 2.8 through 4.1+.
+ * Compatible with WordPress 2.8 through 4.3+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -19,7 +19,7 @@
  *
  * @package One_Click_Close_Comments
  * @author  Scott Reilly
- * @version 2.3.3
+ * @version 2.3.4
  */
 
 /*
@@ -66,7 +66,7 @@ class c2c_OneClickCloseComments {
 	 * @return string Version number as string
 	 */
 	public static function version() {
-		return '2.3.3';
+		return '2.3.4';
 	}
 
 	/**
@@ -89,7 +89,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function do_init() {
 		// Load textdomain.
-		load_plugin_textdomain( 'one-click-close-comments', false, basename( __DIR__ ) );
+		load_plugin_textdomain( 'one-click-close-comments', false, basename( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'lang' );
 
 		// Set translatable and filterable strings.
 		self::$help_text = array(
