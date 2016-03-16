@@ -1,17 +1,16 @@
 <?php
 /**
  * Plugin Name: One Click Close Comments
- * Version:     2.3.4
+ * Version:     2.3.5
  * Plugin URI:  http://coffee2code.com/wp-plugins/one-click-close-comments/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
  * Text Domain: one-click-close-comments
- * Domain Path: /lang/
  * License:     GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Description: Conveniently close or open comments for a post or page with one click.
  *
- * Compatible with WordPress 2.8 through 4.3+.
+ * Compatible with WordPress 2.8 through 4.4+.
  *
  * =>> Read the accompanying readme.txt file for instructions and documentation.
  * =>> Also, visit the plugin's homepage for additional information and updates.
@@ -19,7 +18,7 @@
  *
  * @package One_Click_Close_Comments
  * @author  Scott Reilly
- * @version 2.3.4
+ * @version 2.3.5
  */
 
 /*
@@ -29,7 +28,7 @@
  */
 
 /*
-	Copyright (c) 2009-2015 by Scott Reilly (aka coffee2code)
+	Copyright (c) 2009-2016 by Scott Reilly (aka coffee2code)
 
 	This program is free software; you can redistribute it and/or
 	modify it under the terms of the GNU General Public License
@@ -66,7 +65,7 @@ class c2c_OneClickCloseComments {
 	 * @return string Version number as string
 	 */
 	public static function version() {
-		return '2.3.4';
+		return '2.3.5';
 	}
 
 	/**
@@ -89,7 +88,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function do_init() {
 		// Load textdomain.
-		load_plugin_textdomain( 'one-click-close-comments', false, basename( dirname( __FILE__ ) ) . DIRECTORY_SEPARATOR . 'lang' );
+		load_plugin_textdomain( 'one-click-close-comments' );
 
 		// Set translatable and filterable strings.
 		self::$help_text = array(
@@ -124,7 +123,7 @@ class c2c_OneClickCloseComments {
 	 * AJAX responder to toggle the comment status for a post (if user if authorized to do so).
 	 */
 	public static function toggle_comment_status() {
-		$post_id = isset( $_POST['post_id'] ) ? $_POST['post_id'] : null;
+		$post_id = isset( $_POST['post_id'] ) ? (int) $_POST['post_id'] : null;
 		check_ajax_referer( self::$field );
 		if ( $post_id && current_user_can( 'edit_post', $post_id ) ) {
 			$post = get_post( $post_id );
@@ -210,7 +209,6 @@ class c2c_OneClickCloseComments {
 	 * @since 2.2
 	 */
 	public static function enqueue_admin_js() {
-		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( __CLASS__, plugins_url( 'assets/admin.js', __FILE__ ), array( 'jquery' ), self::version(), true );
 		$text = array(
 			'comments_closed_text' => self::$help_text[0],

@@ -5,8 +5,8 @@ Tags: comments, close comments, open comments, admin, comment, discussion, comme
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 2.8
-Tested up to: 4.3
-Stable tag: 2.3.4
+Tested up to: 4.4
+Stable tag: 2.3.5
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -82,6 +82,16 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 
 == Changelog ==
+
+= 2.3.5 (2016-03-16) =
+* Change: Add support for language packs:
+    * Don't load textdomain from file.
+    * Remove .pot file and /lang subdirectory.
+    * Remove 'Domain Path' from plugin header.
+* New: Add LICENSE file.
+* New: Add empty index.php to prevent files from being listed if web server has enabled directory listings.
+* Change: Note compatibility through WP 4.4+.
+* Change: Update copyright date (2016).
 
 = 2.3.4 (2015-09-15) =
 * Bugfix: Really revert back to using `dirname(__FILE__)`; __DIR__ is only PHP 5.3+
@@ -193,6 +203,9 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 
 == Upgrade Notice ==
+
+= 2.3.5 =
+Minor update: added support for language packs; verified compatibility through WP 4.4; updated copyright date (2016)
 
 = 2.3.4 =
 Minor bugfix release for users running PHP 5.2.x: revert use of a constant only defined in PHP 5.3+. You really should upgrade your PHP or your host if this affects you. Also noted compatibility with WP 4.3+.
