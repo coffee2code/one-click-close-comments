@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 2.8
-Tested up to: 4.4
+Requires at least: 4.6
+Tested up to: 4.7
 Stable tag: 2.3.5
 
 Conveniently close or open comments for a post or page with one click.
@@ -89,6 +89,8 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
     * Change colors to be WCAG AA compliant
 * Change: Use `printf()` to format output markup rather than concatenating strings, variables, and function calls.
 * Change: Escape variables used as markup attributes (hardening; none of the instances are user input).
+* Change: Note compatibility through WP 4.7+.
+* Change: Remove support for WordPress older than 4.6 (should still work for earlier versions back to WP 3.1)
 * Change: Minor code reformatting (add spacing between sections of code).
 * Change: Update copyright date (2017).
 
