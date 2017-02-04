@@ -84,6 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* Change: Minor code reformatting (add spacing between sections of code).
 * Change: Update copyright date (2017).
 
 = 2.3.5 (2016-03-16) =

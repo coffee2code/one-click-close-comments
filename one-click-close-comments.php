@@ -113,10 +113,11 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function enqueue_scripts_and_styles() {
 		// Enqueues JS for admin page.
-		add_action( 'admin_enqueue_scripts',      array( __CLASS__, 'enqueue_admin_js' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_js' ) );
+
 		// Register and enqueue styles for admin page.
 		self::register_styles();
-		add_action( 'admin_enqueue_scripts',      array( __CLASS__, 'enqueue_admin_css' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_css' ) );
 	}
 
 	/**
@@ -125,6 +126,7 @@ class c2c_OneClickCloseComments {
 	public static function toggle_comment_status() {
 		$post_id = isset( $_POST['post_id'] ) ? (int) $_POST['post_id'] : null;
 		check_ajax_referer( self::$field );
+
 		if ( $post_id && current_user_can( 'edit_post', $post_id ) ) {
 			$post = get_post( $post_id );
 			if ( $post ) {
@@ -134,6 +136,7 @@ class c2c_OneClickCloseComments {
 				echo ( 'open' == $new_status ? '1' : '0' );
 			}
 		}
+
 		exit;
 	}
 
@@ -170,6 +173,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function handle_column_data( $column_name, $post_id ) {
 		$post = get_post( $post_id );
+
 		if ( self::$field == $column_name ) {
 			$auth = current_user_can( 'edit_post', $post_id );
 			$state = ( 'open' == $post->comment_status ? 1 : 0 );
@@ -178,9 +182,11 @@ class c2c_OneClickCloseComments {
 				echo "<span title='" . esc_attr( self::$help_text[ $state ] ) . "'>";
 			}
 			echo "<span id='" . wp_create_nonce( self::$field ) . "' class='" . self::$css_class . "-{$state}'>" . self::$click_char . '</span>';
+
 			if ( $auth ) {
 				echo '</span>';
 			}
+
 			return;
 		}
 	}
@@ -210,6 +216,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function enqueue_admin_js() {
 		wp_enqueue_script( __CLASS__, plugins_url( 'assets/admin.js', __FILE__ ), array( 'jquery' ), self::version(), true );
+
 		$text = array(
 			'comments_closed_text' => self::$help_text[0],
 			'comments_opened_text' => self::$help_text[1]
