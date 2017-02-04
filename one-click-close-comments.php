@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: One Click Close Comments
- * Version:     2.3.5
+ * Version:     2.4
  * Plugin URI:  http://coffee2code.com/wp-plugins/one-click-close-comments/
  * Author:      Scott Reilly
  * Author URI:  http://coffee2code.com/
@@ -18,13 +18,14 @@
  *
  * @package One_Click_Close_Comments
  * @author  Scott Reilly
- * @version 2.3.5
+ * @version 2.4
  */
 
 /*
  * TODO:
  * - Add template tag (or inject via filter) an AJAX link for admins (and post authors) to close link from the front-end
  * - Unit tests
+ * - Support non-JS usage
  */
 
 /*
@@ -65,7 +66,7 @@ class c2c_OneClickCloseComments {
 	 * @return string Version number as string
 	 */
 	public static function version() {
-		return '2.3.5';
+		return '2.4';
 	}
 
 	/**

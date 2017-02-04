@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
 Tested up to: 4.7
-Stable tag: 2.3.5
+Stable tag: 2.4
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -83,7 +83,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
-= () =
+= 2.4 (2017-02-04) =
 * Change: Improve accessbility (a11y)
     * Add descriptive text for close/open link to display instead of the indicator character for screen readers
     * Change colors to be WCAG AA compliant
@@ -94,6 +94,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Minor code reformatting (add spacing between sections of code).
 * Change: Minor readme.txt improvements.
 * Change: Update copyright date (2017).
+* Change: Update screenshot.
 
 = 2.3.5 (2016-03-16) =
 * Change: Add support for language packs:
@@ -215,6 +216,9 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 
 == Upgrade Notice ==
+
+= 2.4 =
+Minor update: improved accessibility, compatibility is now WP 4.6-4.7+, updated copyright date (2017), and more
 
 = 2.3.5 =
 Minor update: added support for language packs; verified compatibility through WP 4.4; updated copyright date (2016)
