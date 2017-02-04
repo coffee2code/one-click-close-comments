@@ -86,6 +86,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 = () =
 * Change: Improve accessbility (a11y)
     * Add descriptive text for close/open link to display instead of the indicator character for screen readers
+    * Change colors to be WCAG AA compliant
 * Change: Use `printf()` to format output markup rather than concatenating strings, variables, and function calls.
 * Change: Escape variables used as markup attributes (hardening; none of the instances are user input).
 * Change: Minor code reformatting (add spacing between sections of code).
