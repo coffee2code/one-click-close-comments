@@ -84,6 +84,8 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* Change: Use `printf()` to format output markup rather than concatenating strings, variables, and function calls.
+* Change: Escape variables used as markup attributes (hardening; none of the instances are user input).
 * Change: Minor code reformatting (add spacing between sections of code).
 * Change: Update copyright date (2017).
 

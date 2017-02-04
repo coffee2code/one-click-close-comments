@@ -181,7 +181,14 @@ class c2c_OneClickCloseComments {
 			if ( $auth ) {
 				echo "<span title='" . esc_attr( self::$help_text[ $state ] ) . "'>";
 			}
-			echo "<span id='" . wp_create_nonce( self::$field ) . "' class='" . self::$css_class . "-{$state}'>" . self::$click_char . '</span>';
+
+			printf(
+				'<span id="%s" class="%s-%s">%s</span>',
+				esc_attr( wp_create_nonce( self::$field ) ),
+				esc_attr( self::$css_class ),
+				esc_attr( $state ),
+				self::$click_char
+			);
 
 			if ( $auth ) {
 				echo '</span>';
