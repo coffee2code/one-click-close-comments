@@ -22,9 +22,9 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comme
 
 == Installation ==
 
-1. Unzip `one-click-close-comments.zip` inside the `/wp-content/plugins/` directory for your site (or install via the built-in WordPress plugin installer)
-1. Activate the plugin through the 'Plugins' admin menu in WordPress
-1. When on the 'Edit Posts' or 'Edit Pages' admin pages, click the indicators to toggle the comment status for a post, as necessary.
+1. Install via the built-in WordPress plugin installer. Or download and unzip `one-click-close-comments.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+2. Activate the plugin through the 'Plugins' admin menu in WordPress
+3. When on the 'Edit Posts' or 'Edit Pages' admin pages, click the indicators to toggle the comment status for a post, as necessary.
 
 
 == Frequently Asked Questions ==
@@ -55,7 +55,7 @@ By default, commenting status is represented using the `&bull;` character. You c
 
 == Filters ==
 
-The plugin exposes one action for hooking.
+The plugin exposes one action for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
 = c2c_one_click_close_comments_click_char (action) =
 
@@ -92,6 +92,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Note compatibility through WP 4.7+.
 * Change: Remove support for WordPress older than 4.6 (should still work for earlier versions back to WP 3.1)
 * Change: Minor code reformatting (add spacing between sections of code).
+* Change: Minor readme.txt improvements.
 * Change: Update copyright date (2017).
 
 = 2.3.5 (2016-03-16) =
