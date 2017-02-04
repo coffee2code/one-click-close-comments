@@ -22,6 +22,7 @@ jQuery(document).ready(function($) {
 					span.removeClass(current_class);
 					span.addClass(new_class + data);
 					span.parent().attr('title', help_text[data]);
+					span.parent().find('.screen-reader-text').text(help_text[data]);
 					// Update hidden field used to configure Quick Edit
 					$('#inline_'+post_id+' div.comment_status').html( (data == '1' ? 'open' : 'closed') );
 				}

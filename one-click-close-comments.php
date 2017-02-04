@@ -183,12 +183,14 @@ class c2c_OneClickCloseComments {
 			}
 
 			printf(
-				'<span id="%s" class="%s-%s">%s</span>',
+				'<span id="%s" class="%s-%s" aria-hidden="true">%s</span>',
 				esc_attr( wp_create_nonce( self::$field ) ),
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
 				self::$click_char
 			);
+
+			echo '<span class="screen-reader-text">' . self::$help_text[ $state ] . '</span>';
 
 			if ( $auth ) {
 				echo '</span>';
