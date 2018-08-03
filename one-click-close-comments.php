@@ -205,7 +205,7 @@ class c2c_OneClickCloseComments {
 	 * @since 2.2
 	 */
 	public static function register_styles() {
-		wp_register_style( __CLASS__, plugins_url( 'assets/admin.css', __FILE__ ) );
+		wp_register_style( __CLASS__, plugins_url( 'assets/admin.css', __FILE__ ), array(), self::version() );
 	}
 
 	/**
