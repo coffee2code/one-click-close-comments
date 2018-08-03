@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 2.4
+Stable tag: 2.5
 
 Conveniently close or open comments for a post or page with one click.
 
@@ -83,7 +83,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
-= () =
+= 2.5 (2018-08-03) =
 * Change: Improve display of control toggle (and label) on smaller viewports
 * Change: Include plugin version number when registering styles
 * New: Add README.md
@@ -227,6 +227,9 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 
 == Upgrade Notice ==
+
+= 2.5 =
+Minor update: improved display of control toggle (and label) on smaller viewports; verified compatibility through WP 4.9+; updated copyright date (2018); other minor tweaks
 
 = 2.4 =
 Minor update: improved accessibility, compatibility is now WP 4.6-4.7+, updated copyright date (2017), and more
