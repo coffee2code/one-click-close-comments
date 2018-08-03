@@ -6,8 +6,9 @@ jQuery(document).ready(function($) {
 	$(".close_comments span").live('click', function() {
 		var span = $(this).find('span');
 		var current_class = span.attr('class');
-		if ( current_class == undefined )
+		if ( current_class == undefined ) {
 			return;
+		}
 		var cclass = current_class.split('-');
 		var new_class = cclass[0] + '-';
 		var post_tr = $(this).parents('tr');

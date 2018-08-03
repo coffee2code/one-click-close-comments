@@ -84,6 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* Change: Add explicit curly braces to JS 'if' statement
 * Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
