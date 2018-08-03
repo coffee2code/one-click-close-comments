@@ -5,7 +5,7 @@ Tags: comments, close comments, open comments, admin, comment, discussion, comme
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.6
-Tested up to: 4.7
+Tested up to: 4.9
 Stable tag: 2.4
 
 Conveniently close or open comments for a post or page with one click.
@@ -84,6 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
 = 2.4 (2017-02-04) =
