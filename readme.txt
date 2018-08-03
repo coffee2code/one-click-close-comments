@@ -53,7 +53,7 @@ By default, commenting status is represented using the `&bull;` character. You c
 1. A screenshot of the 'Posts' admin page with the plugin activated. The tooltip reads: "Comments are open. Click to close." Were the mouse to hover over the red indicator, the tooltip would read: "Comments are closed. Click to open."
 
 
-== Filters ==
+== Hooks ==
 
 The plugin exposes one action for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
@@ -87,6 +87,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
+* Change: Rename readme.txt section from 'Filters' to 'Hooks'
 
 = 2.4 (2017-02-04) =
 * Change: Improve accessbility (a11y)
