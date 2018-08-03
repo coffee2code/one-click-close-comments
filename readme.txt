@@ -83,6 +83,9 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
+= () =
+* Change: Update copyright date (2018)
+
 = 2.4 (2017-02-04) =
 * Change: Improve accessbility (a11y)
     * Add descriptive text for close/open link to display instead of the indicator character for screen readers
