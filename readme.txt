@@ -17,7 +17,7 @@ From the admin listing of posts ('Edit Posts') and pages ('Edit Pages'), a user 
 
 This plugin will only function for administrative users in the admin who have JavaScript enabled.
 
-Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Plugin Directory Page](https://wordpress.org/plugins/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
+Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comments/) | [Plugin Directory Page](https://wordpress.org/plugins/one-click-close-comments/) | [GitHub](https://github.com/coffee2code/one-click-close-comments/) | [Author Homepage](http://coffee2code.com)
 
 
 == Installation ==
@@ -84,6 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* Change: Add GitHub link to readme
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 
