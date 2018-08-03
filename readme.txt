@@ -57,7 +57,7 @@ By default, commenting status is represented using the `&bull;` character. You c
 
 The plugin exposes one action for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
-= c2c_one_click_close_comments_click_char (action) =
+**c2c_one_click_close_comments_click_char (action)**
 
 The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character or string as the plugin's indicator in the posts listing tables. It is the character that get color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. By default this is a bullet, `&bull;` (a solid circle).
 
@@ -88,6 +88,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Note compatibility through WP 4.9+
 * Change: Update copyright date (2018)
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
+* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 
 = 2.4 (2017-02-04) =
 * Change: Improve accessbility (a11y)
