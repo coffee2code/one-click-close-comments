@@ -96,6 +96,19 @@ class c2c_OneClickCloseComments {
 		);
 		self::$field_title = '';
 		self::$click_char = apply_filters( 'one-click-close-comments-click-char', '&bull;' ); /* Deprecated! */
+
+		/**
+		 * Filters the character or markup used for the comment status toggle.
+		 *
+		 * Note: This is the renamed successor to the original filter
+		 * 'one-click-close-comments-click-char'.
+		 *
+		 * @since 2.1
+		 *
+		 * @param string $markup The character or markup for the comment status toggle.
+		 *                       A dashicon can be used when specified with 'dashicons-'
+		 *                       prefix. Default 'dashicons-admin-comments'.
+		 */
 		self::$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', self::$click_char );
 
 		// Register hooks.
