@@ -84,6 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* Change: Split paragraph in README.md's "Support" section into two
 * Change: Note compatibility through WP 5.1+
 * Change: Update copyright date (2019)
 * Change: Update License URI to be HTTPS
