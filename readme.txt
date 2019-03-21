@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: comments, close comments, open comments, admin, comment, discussion, commenting status, coffee2code
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Requires at least: 4.6
+Requires at least: 4.7
 Tested up to: 5.1
 Stable tag: 2.5
 
@@ -90,6 +90,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Use `wp_doing_ajax()` for official detection of use of AJAX
 * Change: Split paragraph in README.md's "Support" section into two
 * Change: Note compatibility through WP 5.1+
+* Change: Remove support for versions of WordPress older than 4.7
 * Change: Update copyright date (2019)
 * Change: Update License URI to be HTTPS
 
