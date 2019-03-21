@@ -59,7 +59,7 @@ The plugin exposes one action for hooking. Such code should ideally be put into 
 
 **c2c_one_click_close_comments_click_char (action)**
 
-The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character or string as the plugin's indicator in the posts listing tables. It is the character that get color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. By default this is a bullet, `&bull;` (a solid circle).
+The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character, string, or markup as the plugin's indicator in the posts listing tables. It is the character that gets color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. You can make use of [Dashicons](https://developer.wordpress.org/resource/dashicons/) by specifying the desired dashicon's name (with the "dashicons-" prefix). By default this is a bullet, `&bull;` (a solid circle).
 
 Arguments:
 
@@ -84,6 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 == Changelog ==
 
 = () =
+* New: Add support for using dashicons for the click character
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * New: Add inline documentation for hook
 * Change: Initialize plugin on 'plugins_loaded' action instead of on load

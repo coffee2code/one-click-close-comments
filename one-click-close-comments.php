@@ -112,6 +112,10 @@ class c2c_OneClickCloseComments {
 		 */
 		self::$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', self::$click_char );
 
+		if ( 0 === strpos( self::$click_char, 'dashicons-' ) ) {
+			self::$click_char = sprintf( '<span class="dashicons %s"></span>', esc_attr( self::$click_char ) );
+		}
+
 		// Register hooks.
 		add_filter( 'manage_posts_columns',       array( __CLASS__, 'add_post_column' ) );
 		add_action( 'manage_posts_custom_column', array( __CLASS__, 'handle_column_data' ), 10, 2 );
