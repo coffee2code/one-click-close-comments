@@ -77,7 +77,7 @@ class c2c_OneClickCloseComments {
 		add_action( 'load-edit.php',         array( __CLASS__, 'enqueue_scripts_and_styles' ) );
 		add_action( 'wp_ajax_'.self::$field, array( __CLASS__, 'toggle_comment_status' ) );
 
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_REQUEST['action'] ) && 'inline-save' == $_REQUEST['action'] ) {
+		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'inline-save' == $_REQUEST['action'] ) {
 			add_action( 'admin_init',        array( __CLASS__, 'do_init' ) );
 		}
 	}
