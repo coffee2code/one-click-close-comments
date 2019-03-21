@@ -59,23 +59,23 @@ The plugin exposes one action for hooking. Such code should ideally be put into 
 
 **c2c_one_click_close_comments_click_char (filter)**
 
-The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character, string, or markup as the plugin's indicator in the posts listing tables. It is the character that gets color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. You can make use of [Dashicons](https://developer.wordpress.org/resource/dashicons/) by specifying the desired dashicon's name (with the "dashicons-" prefix). By default this is a bullet, `&bull;` (a solid circle).
+The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character, string, or markup as the plugin's indicator in the posts listing tables. It is the character that gets color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. You can make use of [Dashicons](https://developer.wordpress.org/resource/dashicons/) by specifying the desired dashicon's name (with the "dashicons-" prefix). By default this is the comments dashicon, `dashicons-admin-comments`.
 
 Arguments:
 
-* $char (array): The character to be used for display (by default this is `&bull;`).
+* $char (array): The character, string, or markup to be used for display (by default this is `dashicons-admin-comments`).
 
 Example:
 
 `
 /**
- * Changes the character used as the one-click link to a diamond.
+ * Changes the character used as the one-click link to a bullet (solid circle).
  *
- * @param string $char The default character (a bullet)
+ * @param string $char The default character.
  * @return string
  */
 function custom_one_click_char( $char ) {
-	return '&diams;';
+	return '&bull;';
 }
 add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
 `
@@ -85,6 +85,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 = () =
 * New: Add support for using dashicons for the click character
+* Change: Replace the bullet character (solid circle) with comment bubble dashicon as column icon for one-click link
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
 * New: Add inline documentation for hook
 * Change: Initialize plugin on 'plugins_loaded' action instead of on load

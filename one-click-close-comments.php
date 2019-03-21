@@ -96,7 +96,12 @@ class c2c_OneClickCloseComments {
 		);
 		self::$field_title = '';
 
-		self::$click_char = apply_filters_deprecated( 'one-click-close-comments-click-char', array( '&bull;' ), '2.1.0', 'c2c_one_click_close_comments_click_char' );
+		self::$click_char = apply_filters_deprecated(
+			'one-click-close-comments-click-char',
+			array( 'dashicons-admin-comments' ),
+			'2.1.0',
+			'c2c_one_click_close_comments_click_char'
+		);
 
 		/**
 		 * Filters the character or markup used for the comment status toggle.
