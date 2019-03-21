@@ -57,7 +57,7 @@ By default, commenting status is represented using the `&bull;` character. You c
 
 The plugin exposes one action for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
-**c2c_one_click_close_comments_click_char (action)**
+**c2c_one_click_close_comments_click_char (filter)**
 
 The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character, string, or markup as the plugin's indicator in the posts listing tables. It is the character that gets color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. You can make use of [Dashicons](https://developer.wordpress.org/resource/dashicons/) by specifying the desired dashicon's name (with the "dashicons-" prefix). By default this is a bullet, `&bull;` (a solid circle).
 
