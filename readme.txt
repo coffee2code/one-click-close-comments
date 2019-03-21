@@ -86,6 +86,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 = () =
 * New: Add inline documentation for hook
 * Change: Initialize plugin on 'plugins_loaded' action instead of on load
+* Change: Use `apply_filters_deprecated()` when using the deprecated filter
 * Change: Split paragraph in README.md's "Support" section into two
 * Change: Note compatibility through WP 5.1+
 * Change: Update copyright date (2019)

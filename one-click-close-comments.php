@@ -95,7 +95,8 @@ class c2c_OneClickCloseComments {
 			1 => __( 'Comments are open. Click to close.', 'one-click-close-comments' )
 		);
 		self::$field_title = '';
-		self::$click_char = apply_filters( 'one-click-close-comments-click-char', '&bull;' ); /* Deprecated! */
+
+		self::$click_char = apply_filters_deprecated( 'one-click-close-comments-click-char', array( '&bull;' ), '2.1.0', 'c2c_one_click_close_comments_click_char' );
 
 		/**
 		 * Filters the character or markup used for the comment status toggle.
