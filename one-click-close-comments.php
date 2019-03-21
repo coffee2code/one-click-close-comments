@@ -234,6 +234,6 @@ class c2c_OneClickCloseComments {
 
 } // end c2c_OneClickCloseComments
 
-c2c_OneClickCloseComments::init();
+add_action( 'plugins_loaded', array( 'c2c_OneClickCloseComments', 'init' ) );
 
 endif; // end if !class_exists()
