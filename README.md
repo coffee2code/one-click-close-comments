@@ -1,6 +1,6 @@
 # One Click Close Comments
 
-A plugin for WordPress that makes it easy to close or open comments for a post or page with one click.
+A plugin for WordPress that makes it easy to close or open comments for a post or page with one click from the admin listing of posts.
 
 This plugin is available in the WordPress Plugin Directory: https://wordpress.org/plugins/one-click-close-comments/
 

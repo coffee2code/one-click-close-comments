@@ -8,7 +8,7 @@
  * Text Domain: one-click-close-comments
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Description: Conveniently close or open comments for a post or page with one click.
+ * Description: Conveniently close or open comments for a post or page with one click from the admin listing of posts.
  *
  * Compatible with WordPress 4.7 through 5.1+.
  *

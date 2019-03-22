@@ -8,7 +8,7 @@ Requires at least: 4.7
 Tested up to: 5.1
 Stable tag: 2.5
 
-Conveniently close or open comments for a post or page with one click.
+Conveniently close or open comments for a post or page with one click from the admin listing of posts.
 
 
 == Description ==
@@ -91,6 +91,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Initialize plugin on 'plugins_loaded' action instead of on load
 * Change: Use `apply_filters_deprecated()` when using the deprecated filter
 * Change: Use `wp_doing_ajax()` for official detection of use of AJAX
+* Change: Tweak plugin description
 * Change: Split paragraph in README.md's "Support" section into two
 * Change: Note compatibility through WP 5.1+
 * Change: Remove support for versions of WordPress older than 4.7
