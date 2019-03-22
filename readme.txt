@@ -51,7 +51,7 @@ By default, commenting status is represented using the comment bubble dashicon, 
 
 == Screenshots ==
 
-1. A screenshot of the 'Posts' admin page with the plugin activated. The tooltip reads: "Comments are open. Click to close." Were the mouse to hover over the red indicator, the tooltip would read: "Comments are closed. Click to open."
+1. A screenshot of the 'Posts' admin page with the plugin activated. The tooltip (from hovering over a green indicator) reads: "Comments are open. Click to close." Were the mouse to hover over a red indicator, the tooltip would read: "Comments are closed. Click to open."
 
 
 == Hooks ==
@@ -98,6 +98,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Remove support for versions of WordPress older than 4.7
 * Change: Update copyright date (2019)
 * Change: Update License URI to be HTTPS
+* Change: Update screenshot, icon, and banner for Plugin Directory
 
 = 2.5 (2018-08-03) =
 * Change: Improve display of control toggle (and label) on smaller viewports
