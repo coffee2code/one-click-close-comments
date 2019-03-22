@@ -56,7 +56,7 @@ By default, commenting status is represented using the comment bubble dashicon, 
 
 == Hooks ==
 
-The plugin exposes one action for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
+The plugin exposes one filter for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
 
 **c2c_one_click_close_comments_click_char (filter)**
 
