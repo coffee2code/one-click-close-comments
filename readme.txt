@@ -29,23 +29,24 @@ Links: [Plugin Homepage](http://coffee2code.com/wp-plugins/one-click-close-comme
 
 == Frequently Asked Questions ==
 
-= I can see the colored dots indicating current commenting status, but why aren't they clickable? =
+= I can see the colored comment bubble indicating current commenting status, but why aren't they clickable? =
 
 The commenting status link/button is only clickable is you have JavaScript enabled.
 
-= What does the color-coding of the dot mean? =
+= What does the color-coding of the comment bubble mean? =
 
 Green means the post is currently open for comments; red means the post is not currently open for comments.
 
-= How can I customize the color-coding used for the dot? =
+= How can I customize the color-coding used for the comment bubble? =
 
 You can customize the colors via CSS. `.comment-state-1` indicates comments are open. `.comment-state-0` indicates comments are closed.
 
-= How can I customize the dot used to represent commenting status? =
+= How can I customize the character used to represent commenting status? =
 
-By default, commenting status is represented using the `&bull;` character. You can change this by filtering `c2c_one_click_close_comments_click_char`. Here's an example -- added to a theme's functions.php file -- to change it to a solid diamond:
+By default, commenting status is represented using the comment bubble dashicon, `dashicons-admin-comments`. You can change this by filtering `c2c_one_click_close_comments_click_char`. Here's an example -- added to a theme's functions.php file -- to change it to the original bullet
+(solid circle) character:
 
-`add_filter( 'c2c_one_click_close_comments_click_char', create_function('$a', 'return "&diams";') );`
+`add_filter( 'c2c_one_click_close_comments_click_char', function ( $a ) { return "&bull;"; } );`
 
 
 == Screenshots ==
