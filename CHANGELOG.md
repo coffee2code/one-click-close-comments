@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.6 _(2019-03-22)_
+* New: Add support for using dashicons for the click character
+* Change: Replace the bullet character (solid circle) with comment bubble dashicon as column icon for one-click link
+* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
+* New: Add inline documentation for hook
+* Change: Initialize plugin on 'plugins_loaded' action instead of on load
+* Change: Use `apply_filters_deprecated()` when using the deprecated filter
+* Change: Use `wp_doing_ajax()` for official detection of use of AJAX
+* Change: Tweak plugin description
+* Change: Split paragraph in README.md's "Support" section into two
+* Change: Note compatibility through WP 5.1+
+* Change: Remove support for versions of WordPress older than 4.7
+* Change: Update copyright date (2019)
+* Change: Update License URI to be HTTPS
+* Change: Update screenshot, icon, and banner for Plugin Directory
+
 ## 2.5 _(2018-08-03)_
 * Change: Improve display of control toggle (and label) on smaller viewports
 * Change: Include plugin version number when registering styles

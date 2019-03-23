@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 5.1
-Stable tag: 2.5
+Stable tag: 2.6
 
 Conveniently close or open comments for a post or page with one click from the admin listing of posts.
 
@@ -84,7 +84,7 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
-= () =
+= 2.6 (2019-03-22) =
 * New: Add support for using dashicons for the click character
 * Change: Replace the bullet character (solid circle) with comment bubble dashicon as column icon for one-click link
 * New: Add CHANGELOG.md file and move all but most recent changelog entries into it
@@ -128,6 +128,9 @@ _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/on
 
 
 == Upgrade Notice ==
+
+= 2.6 =
+Recommended update: change commenting status indicator to comment bubble icon, support dashicons as alternative status indicators, tweaked plugin initialization, dropped compatibility with WP older than 4.7, noted compatibility through WP 5.1+, updated copyright date (2019), more.
 
 = 2.5 =
 Minor update: improved display of control toggle (and label) on smaller viewports; verified compatibility through WP 4.9+; updated copyright date (2018); other minor tweaks
