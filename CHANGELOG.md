@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.3+
+* Change: Update copyright date (2020)
 
 ## 2.6 _(2019-03-22)_
 * New: Add support for using dashicons for the click character
