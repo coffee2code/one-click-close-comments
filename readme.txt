@@ -48,6 +48,10 @@ By default, commenting status is represented using the comment bubble dashicon, 
 
 `add_filter( 'c2c_one_click_close_comments_click_char', function ( $a ) { return "&bull;"; } );`
 
+= How can I open or close comments when editing a specific post? =
+
+WordPress already includes the interface for you to edit the comment status for a specific post. When editing a post, you'll find the setting in the "Discussion" section; the checkbox is labeled "Allow Comments".
+
 = Why does the comment status indicator indicate that comments are open, when in reality comments are disabled (or vice vera)? =
 
 The comment status indicator only reflects the value of the "Allow Comments" setting for the post. In most cases, the indicator will properly reflect the ability for the user to see the comment form and/or submit a comment.
