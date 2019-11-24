@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add an additional FAQ item
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
 
