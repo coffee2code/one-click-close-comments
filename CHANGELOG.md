@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.3+
+
 ## 2.6 _(2019-03-22)_
 * New: Add support for using dashicons for the click character
 * Change: Replace the bullet character (solid circle) with comment bubble dashicon as column icon for one-click link
