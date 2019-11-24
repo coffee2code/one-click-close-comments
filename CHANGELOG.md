@@ -33,7 +33,7 @@
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 
 ## 2.4 _(2017-02-04)_
-* Change: Improve accessbility (a11y)
+* Change: Improve accessibility (a11y)
     * Add descriptive text for close/open link to display instead of the indicator character for screen readers
     * Change colors to be WCAG AA compliant
 * Change: Use `printf()` to format output markup rather than concatenating strings, variables, and function calls.

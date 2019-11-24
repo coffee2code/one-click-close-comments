@@ -43,8 +43,7 @@ You can customize the colors via CSS. `.comment-state-1` indicates comments are 
 
 = How can I customize the character used to represent commenting status? =
 
-By default, commenting status is represented using the comment bubble dashicon, `dashicons-admin-comments`. You can change this by filtering `c2c_one_click_close_comments_click_char`. Here's an example -- added to a theme's functions.php file -- to change it to the original bullet
-(solid circle) character:
+By default, commenting status is represented using the comment bubble dashicon, `dashicons-admin-comments`. You can change this by filtering `c2c_one_click_close_comments_click_char`. Here's an example -- added to a theme's functions.php file -- to change it to the original bullet (solid circle) character:
 
 `add_filter( 'c2c_one_click_close_comments_click_char', function ( $a ) { return "&bull;"; } );`
 
