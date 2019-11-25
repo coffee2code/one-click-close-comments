@@ -53,9 +53,9 @@ WordPress already includes the interface for you to edit the comment status for 
 
 = Why does the comment status indicator indicate that comments are open, when in reality comments are disabled (or vice vera)? =
 
-The comment status indicator only reflects the value of the "Allow Comments" setting for the post. In most cases, the indicator will properly reflect the ability for the user to see the comment form and/or submit a comment.
+The comment status indicator only reflects the value of the "Allow Comments" setting for the post. In most cases, the indicator will accurately reflect the ability for the user to see the comment form and/or submit a comment.
 
-However, other plugins, the theme, or custom code may affect the visitor's ability to see the comment form when viewing a post and/or may permit commenting at the time the post is shown to them despite the value of the setting. This situation should be fairly rare.
+However, other plugins, the theme, or custom code may affect the visitor's ability to see the comment form when viewing a post and/or may permit or disable commenting at the time the post is shown to them despite the value of the setting. For instance, you could have another plugin installed which disables comments for a post after one year. After a year, that plugin would disable comments in its own way, but the comment status indicator for the post could reflect that comments are open since technically the post's "Allow Comments" setting would still be enabled.
 
 
 == Screenshots ==
