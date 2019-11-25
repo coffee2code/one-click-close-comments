@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 5.3
-Stable tag: 2.6
+Stable tag: 2.6.1
 
 Conveniently close or open comments for a post or page with one click from the admin listing of posts.
 
@@ -93,6 +93,11 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
+= 2.6.1 (2019-11-24) =
+* New: Add additional FAQ items
+* Change: Note compatibility through WP 5.3+
+* Change: Update copyright date (2020)
+
 = 2.6 (2019-03-22) =
 * New: Add support for using dashicons for the click character
 * Change: Replace the bullet character (solid circle) with comment bubble dashicon as column icon for one-click link
@@ -120,23 +125,13 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Rename readme.txt section from 'Filters' to 'Hooks'
 * Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
 
-= 2.4 (2017-02-04) =
-* Change: Improve accessbility (a11y)
-    * Add descriptive text for close/open link to display instead of the indicator character for screen readers
-    * Change colors to be WCAG AA compliant
-* Change: Use `printf()` to format output markup rather than concatenating strings, variables, and function calls.
-* Change: Escape variables used as markup attributes (hardening; none of the instances are user input).
-* Change: Note compatibility through WP 4.7+.
-* Change: Remove support for WordPress older than 4.6 (should still work for earlier versions back to WP 3.1)
-* Change: Minor code reformatting (add spacing between sections of code).
-* Change: Minor readme.txt improvements.
-* Change: Update copyright date (2017).
-* Change: Update screenshot.
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/one-click-close-comments/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.6.1 =
+Trivial update: added a couple more FAQs, noted compatibility through WP 5.3+, and updated copyright date (2020)
 
 = 2.6 =
 Recommended update: change commenting status indicator to comment bubble icon, support dashicons as alternative status indicators, tweaked plugin initialization, dropped compatibility with WP older than 4.7, noted compatibility through WP 5.1+, updated copyright date (2019), more.
