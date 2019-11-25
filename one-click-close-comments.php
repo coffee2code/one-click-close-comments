@@ -26,6 +26,11 @@
  * - Add template tag (or inject via filter) an AJAX link for admins (and post authors) to close link from the front-end
  * - Unit tests
  * - Support non-JS usage
+ * - Consider making comment status indicator accurately indicate if comments
+ *   are truly enabled/disabled for the post (taking into account filtering by
+ *   other plugins). If the current state differs from the value of the Allow
+ *   Comments setting, then somehow denote the difference, likely a the
+ *   superscript circle like for pending comments, but without a number.
  */
 
 /*
