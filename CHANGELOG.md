@@ -1,5 +1,8 @@
 # Changelog
 
+## _(in-progress)_
+* Change: Note compatibility through WP 5.4+
+
 ## 2.6.1 _(2019-11-24)_
 * New: Add additional FAQ items
 * Change: Note compatibility through WP 5.3+
