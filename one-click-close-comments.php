@@ -70,7 +70,7 @@ class c2c_OneClickCloseComments {
 		add_action( 'load-edit.php',         array( __CLASS__, 'enqueue_scripts_and_styles' ) );
 		add_action( 'wp_ajax_'.self::$field, array( __CLASS__, 'toggle_comment_status' ) );
 
-		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'inline-save' == $_REQUEST['action'] ) {
+		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'inline-save' === $_REQUEST['action'] ) {
 			add_action( 'admin_init',        array( __CLASS__, 'do_init' ) );
 		}
 	}
@@ -146,9 +146,9 @@ class c2c_OneClickCloseComments {
 			$post = get_post( $post_id );
 			if ( $post ) {
 				global $wpdb;
-				$new_status = ( 'open' == $post->comment_status ? 'closed' : 'open' );
+				$new_status = ( 'open' === $post->comment_status ? 'closed' : 'open' );
 				$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->posts SET comment_status = %s WHERE ID = %d", $new_status, $post_id ) );
-				echo ( 'open' == $new_status ? '1' : '0' );
+				echo ( 'open' === $new_status ? '1' : '0' );
 			}
 		}
 
@@ -167,7 +167,7 @@ class c2c_OneClickCloseComments {
 			// Damn PHP for not facilitating this.
 			$new_cols = array();
 			foreach ( $posts_columns as $k => $v ) {
-				if ( $k == 'comments' ) {
+				if ( $k === 'comments' ) {
 					$new_cols[ self::$field ] = self::$field_title;
 				}
 				$new_cols[ $k ] = $v;
@@ -189,9 +189,9 @@ class c2c_OneClickCloseComments {
 	public static function handle_column_data( $column_name, $post_id ) {
 		$post = get_post( $post_id );
 
-		if ( self::$field == $column_name ) {
+		if ( self::$field === $column_name ) {
 			$auth = current_user_can( 'edit_post', $post_id );
-			$state = ( 'open' == $post->comment_status ? 1 : 0 );
+			$state = ( 'open' === $post->comment_status ? 1 : 0 );
 
 			if ( $auth ) {
 				echo "<span title='" . esc_attr( self::$help_text[ $state ] ) . "'>";
