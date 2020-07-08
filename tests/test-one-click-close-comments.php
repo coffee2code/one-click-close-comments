@@ -4,6 +4,14 @@ defined( 'ABSPATH' ) or die();
 
 class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 
+	public function tearDown() {
+		parent::tearDown();
+
+		wp_deregister_style( 'c2c_OneClickCloseComments' );
+		wp_dequeue_style( 'c2c_OneClickCloseComments' );
+	}
+
+
 	//
 	//
 	// DATA PROVIDERS
@@ -84,6 +92,20 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		if ( $priority ) {
 			$this->assertEquals( $priority, $prio );
 		}
+	}
+
+	/*
+	 * register_styles()
+	 */
+
+	public function test_register_styles() {
+		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'registered' ) );
+		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
+
+		c2c_OneClickCloseComments::register_styles();
+
+		$this->assertTrue( wp_style_is( 'c2c_OneClickCloseComments', 'registered' ) );
+		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
 	}
 
 }
