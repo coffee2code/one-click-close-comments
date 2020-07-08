@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Add unit tests
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Switch to use of strict equality operator instead of simple equality operator
