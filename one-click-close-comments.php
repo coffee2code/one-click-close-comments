@@ -41,7 +41,7 @@
 
 defined( 'ABSPATH' ) or die();
 
-if ( is_admin() && ! class_exists( 'c2c_OneClickCloseComments' ) ) :
+if ( ! class_exists( 'c2c_OneClickCloseComments' ) ) :
 
 class c2c_OneClickCloseComments {
 	private static $css_class   = 'comment_state'; /* Changing this requires changing .css and .js files */
@@ -66,6 +66,10 @@ class c2c_OneClickCloseComments {
 	 * Handles installation tasks, such as ensuring plugin options are instantiated and saved to options table.
 	 */
 	public static function init() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		add_action( 'load-edit.php',         array( __CLASS__, 'do_init' ) );
 		add_action( 'load-edit.php',         array( __CLASS__, 'enqueue_scripts_and_styles' ) );
 		add_action( 'wp_ajax_'.self::$field, array( __CLASS__, 'toggle_comment_status' ) );
