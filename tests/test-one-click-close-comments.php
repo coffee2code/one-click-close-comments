@@ -108,4 +108,22 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
 	}
 
+	/*
+	 * enqueue_scripts_and_styles()
+	 */
+
+	public function test_enqueue_scripts_and_styles() {
+		$this->assertFalse( has_action( 'admin_enqueue_scripts', array( 'c2c_OneClickCloseComments', 'enqueue_admin_js' ) ) );
+		$this->assertFalse( has_action( 'admin_enqueue_scripts', array( 'c2c_OneClickCloseComments', 'enqueue_admin_css' ) ) );
+		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'registered' ) );
+		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
+
+		c2c_OneClickCloseComments::enqueue_scripts_and_styles();
+
+		$this->assertEquals( 10, has_action( 'admin_enqueue_scripts', array( 'c2c_OneClickCloseComments', 'enqueue_admin_js' ) ) );
+		$this->assertEquals( 10, has_action( 'admin_enqueue_scripts', array( 'c2c_OneClickCloseComments', 'enqueue_admin_css' ) ) );
+		$this->assertTrue( wp_style_is( 'c2c_OneClickCloseComments', 'registered' ) );
+		$this->assertFalse( wp_style_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
+	}
+
 }
