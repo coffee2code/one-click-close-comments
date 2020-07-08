@@ -5,6 +5,7 @@
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Refactor `add_post_column()` to be more concise
+* Change: Add inline docs for deprecated filter `one-click-close-comments-click-char`
 * Change: Switch to use of strict equality operator instead of simple equality operator
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
