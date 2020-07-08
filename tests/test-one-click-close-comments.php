@@ -97,6 +97,31 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	}
 
 	/*
+	 * add_post_column()
+	 */
+
+	public function test_add_post_column_when_comments_column_present() {
+		$this->assertEquals(
+			array( 'a' => 'A', 'comments' => 'Comments', 'close_comments' => '', 'b' => 'B' ),
+			c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'comments' => 'Comments', 'b' => 'B' ) )
+		);
+	}
+
+	public function test_add_post_column_when_comments_column_present_as_last_column() {
+		$this->assertEquals(
+			array( 'a' => 'A', 'b' => 'B', 'comments' => 'Comments', 'close_comments' => '' ),
+			c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'b' => 'B', 'comments' => 'Comments' ) )
+		);
+	}
+
+	public function test_add_post_column_when_comments_column_not_present() {
+		$this->assertEquals(
+			array( 'a' => 'A', 'b' => 'B', 'close_comments' => '' ),
+			c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'b' => 'B' ) )
+		);
+	}
+
+	/*
 	 * register_styles()
 	 */
 
