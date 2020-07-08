@@ -167,16 +167,10 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function add_post_column( $posts_columns ) {
 		// Insert column just before the comments count column.  If that column isn't visible to user, put at end.
-		if ( array_key_exists( 'comments', $posts_columns ) ) {
-			// Damn PHP for not facilitating this.
-			$new_cols = array();
-			foreach ( $posts_columns as $k => $v ) {
-				if ( $k === 'comments' ) {
-					$new_cols[ self::$field ] = self::$field_title;
-				}
-				$new_cols[ $k ] = $v;
-			}
-			$posts_columns = $new_cols;
+		if ( $i = array_search( 'columns', array_keys( $posts_columns ), true ) ) {
+			$posts_columns = array_slice( $posts_columns, 0, $i, true )
+				+ array( self::$field => self::$field_title )
+				+ array_slice( $posts_columns, $i, null, true );
 		} else {
 			$posts_columns[ self::$field ] = self::$field_title;
 		}
