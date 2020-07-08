@@ -9,6 +9,8 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 
 		wp_deregister_style( 'c2c_OneClickCloseComments' );
 		wp_dequeue_style( 'c2c_OneClickCloseComments' );
+		wp_deregister_script( 'c2c_OneClickCloseComments' );
+		wp_dequeue_script( 'c2c_OneClickCloseComments' );
 	}
 
 
@@ -139,6 +141,21 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 
 		$this->assertTrue( wp_style_is( 'c2c_OneClickCloseComments', 'registered' ) );
 		$this->assertTrue( wp_style_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
+	}
+
+	/*
+	 * enqueue_admin_js()
+	 */
+
+	public function test_enqueue_admin_js() {
+		$this->assertFalse( wp_script_is( 'c2c_OneClickCloseComments', 'registered' ) );
+		$this->assertFalse( wp_script_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
+
+		c2c_OneClickCloseComments::do_init();
+		c2c_OneClickCloseComments::enqueue_admin_js();
+
+		$this->assertTrue( wp_script_is( 'c2c_OneClickCloseComments', 'registered' ) );
+		$this->assertTrue( wp_script_is( 'c2c_OneClickCloseComments', 'enqueued' ) );
 	}
 
 }
