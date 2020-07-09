@@ -116,6 +116,37 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	}
 
 	/*
+	 * toggle_comment_status()
+	 */
+
+	public function test_toggle_comment_status_when_comments_open() {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		c2c_OneClickCloseComments::do_init();
+		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
+		$_POST['post_id'] = $post_id;
+
+		$this->expectOutputRegex( '~^0$~', c2c_OneClickCloseComments::toggle_comment_status( false ) );
+	}
+
+	public function test_toggle_comment_status_when_comments_closed() {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		c2c_OneClickCloseComments::do_init();
+		$post_id = $this->factory->post->create( array( 'comment_status' => 'closed' ) );
+		$_POST['post_id'] = $post_id;
+
+		$this->expectOutputRegex( '~^1$~', c2c_OneClickCloseComments::toggle_comment_status( false ) );
+	}
+
+	public function test_toggle_comment_status_when_user_does_not_have_caps() {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'subscriber' ) ) );
+		c2c_OneClickCloseComments::do_init();
+		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
+		$_POST['post_id'] = $post_id;
+
+		$this->expectOutputRegex( '~^$~', c2c_OneClickCloseComments::toggle_comment_status( false ) );
+	}
+
+	/*
 	 * get_click_char()
 	 */
 
