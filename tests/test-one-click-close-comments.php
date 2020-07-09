@@ -104,6 +104,18 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	}
 
 	/*
+	 * reset()
+	 */
+
+	public function test_reset() {
+		$this->test_filter_c2c_one_click_close_comments_click_char();
+
+		c2c_OneClickCloseComments::reset();
+
+		$this->test_get_click_char();
+	}
+
+	/*
 	 * get_click_char()
 	 */
 
