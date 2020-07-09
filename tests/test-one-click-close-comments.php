@@ -136,6 +136,19 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	}
 
 	/*
+	 * deprecated filter: one-click-close-comments-click-char
+	 */
+
+	/**
+	 * @expectedDeprecated one-click-close-comments-click-char
+	 */
+	public function test_deprecated_filter_one_click_close_comments_click_char() {
+		add_filter( 'one-click-close-comments-click-char', function ( $char ) { return 'O'; } );
+
+		$this->assertEquals( 'O', c2c_OneClickCloseComments::get_click_char() );
+	}
+
+	/*
 	 * add_post_column()
 	 */
 
