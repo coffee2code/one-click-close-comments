@@ -63,6 +63,15 @@ class c2c_OneClickCloseComments {
 	}
 
 	/**
+	 * Resets memoized variables.
+	 *
+	 * @since 2.7
+	 */
+	public static function reset() {
+		self::$click_char = '';
+	}
+
+	/**
 	 * Handles installation tasks, such as ensuring plugin options are instantiated and saved to options table.
 	 */
 	public static function init() {

@@ -7,6 +7,8 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	public function tearDown() {
 		parent::tearDown();
 
+		c2c_OneClickCloseComments::reset();
+
 		wp_deregister_style( 'c2c_OneClickCloseComments' );
 		wp_dequeue_style( 'c2c_OneClickCloseComments' );
 		wp_deregister_script( 'c2c_OneClickCloseComments' );

@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * New: Add unit tests
+* New: Add `reset()` for resetting memoized variables
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Refactor `add_post_column()` to be more concise
