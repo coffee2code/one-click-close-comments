@@ -125,10 +125,12 @@ class c2c_OneClickCloseComments {
 
 	/**
 	 * AJAX responder to toggle the comment status for a post (if user if authorized to do so).
+	 *
+	 * @param bool $and_exit Exit after echoing result? Default true.
 	 */
-	public static function toggle_comment_status() {
+	public static function toggle_comment_status( $and_exit = true ) {
 		$post_id = isset( $_POST['post_id'] ) ? (int) $_POST['post_id'] : null;
-		check_ajax_referer( self::$field );
+		check_ajax_referer( self::$field, false, $and_exit );
 
 		if ( $post_id && current_user_can( 'edit_post', $post_id ) ) {
 			$post = get_post( $post_id );
@@ -140,7 +142,9 @@ class c2c_OneClickCloseComments {
 			}
 		}
 
-		exit;
+		if ( $and_exit ) {
+			exit;
+		}
 	}
 
 	/**
