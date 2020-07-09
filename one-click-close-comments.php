@@ -124,7 +124,13 @@ class c2c_OneClickCloseComments {
 	}
 
 	/**
-	 * AJAX responder to toggle the comment status for a post (if user if authorized to do so).
+	 * AJAX responder to toggle the comment status for a post (if user if
+	 * authorized to do so).
+	 *
+	 * Possible echo values:
+	 * - '1' if comments for post are now open
+	 * - '0' if comments for post are now closed
+	 * - '-1' if nonce check fails, post does not exist, user is not authorized
 	 *
 	 * @param bool $and_exit Exit after echoing result? Default true.
 	 */
@@ -132,15 +138,19 @@ class c2c_OneClickCloseComments {
 		$post_id = isset( $_POST['post_id'] ) ? (int) $_POST['post_id'] : null;
 		check_ajax_referer( self::$field, false, $and_exit );
 
+		$echo = '-1';
+
 		if ( $post_id && current_user_can( 'edit_post', $post_id ) ) {
 			$post = get_post( $post_id );
 			if ( $post ) {
 				global $wpdb;
 				$new_status = ( 'open' === $post->comment_status ? 'closed' : 'open' );
 				$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->posts SET comment_status = %s WHERE ID = %d", $new_status, $post_id ) );
-				echo ( 'open' === $new_status ? '1' : '0' );
+				$echo = ( 'open' === $new_status ? '1' : '0' );
 			}
 		}
+
+		echo $echo;
 
 		if ( $and_exit ) {
 			exit;
