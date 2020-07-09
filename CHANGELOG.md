@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* New: Extract code for determining click character into new `get_click_char()`
 * New: Add unit tests
 * New: Add `reset()` for resetting memoized variables
 * New: Add TODO.md and move existing TODO list from top of main plugin file into it

@@ -102,41 +102,6 @@ class c2c_OneClickCloseComments {
 		);
 		self::$field_title = '';
 
-		/**
-		 * Filters the character or markup used for the comment status toggle.
-		 *
-		 * @since 2.0
-		 * @deprecated 2.1 Use 'c2c_one_click_close_comments_click_char'
-		 *
-		 * @param string $markup The character or markup for the comment status toggle.
-		 *                       A dashicon can be used when specified with 'dashicons-'
-		 *                       prefix. Default 'dashicons-admin-comments'.
-		 */
-		self::$click_char = apply_filters_deprecated(
-			'one-click-close-comments-click-char',
-			array( 'dashicons-admin-comments' ),
-			'2.1.0',
-			'c2c_one_click_close_comments_click_char'
-		);
-
-		/**
-		 * Filters the character or markup used for the comment status toggle.
-		 *
-		 * Note: This is the renamed successor to the original filter
-		 * 'one-click-close-comments-click-char'.
-		 *
-		 * @since 2.1
-		 *
-		 * @param string $markup The character or markup for the comment status toggle.
-		 *                       A dashicon can be used when specified with 'dashicons-'
-		 *                       prefix. Default 'dashicons-admin-comments'.
-		 */
-		self::$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', self::$click_char );
-
-		if ( 0 === strpos( self::$click_char, 'dashicons-' ) ) {
-			self::$click_char = sprintf( '<span class="dashicons %s"></span>', esc_attr( self::$click_char ) );
-		}
-
 		// Register hooks.
 		add_filter( 'manage_posts_columns',       array( __CLASS__, 'add_post_column' ) );
 		add_action( 'manage_posts_custom_column', array( __CLASS__, 'handle_column_data' ), 10, 2 );
@@ -176,6 +141,56 @@ class c2c_OneClickCloseComments {
 		}
 
 		exit;
+	}
+
+	/**
+	 * Returns the click character or markup.
+	 *
+	 * @since 2.7
+	 *
+	 * @return string
+	 */
+	public static function get_click_char() {
+		if ( self::$click_char ) {
+			return self::$click_char;
+		}
+
+		/**
+		 * Filters the character or markup used for the comment status toggle.
+		 *
+		 * @since 2.0
+		 * @deprecated 2.1 Use 'c2c_one_click_close_comments_click_char'
+		 *
+		 * @param string $markup The character or markup for the comment status toggle.
+		 *                       A dashicon can be used when specified with 'dashicons-'
+		 *                       prefix. Default 'dashicons-admin-comments'.
+		 */
+		$click_char = apply_filters_deprecated(
+			'one-click-close-comments-click-char',
+			array( 'dashicons-admin-comments' ),
+			'2.1.0',
+			'c2c_one_click_close_comments_click_char'
+		);
+
+		/**
+		 * Filters the character or markup used for the comment status toggle.
+		 *
+		 * Note: This is the renamed successor to the original filter
+		 * 'one-click-close-comments-click-char'.
+		 *
+		 * @since 2.1
+		 *
+		 * @param string $markup The character or markup for the comment status toggle.
+		 *                       A dashicon can be used when specified with 'dashicons-'
+		 *                       prefix. Default 'dashicons-admin-comments'.
+		 */
+		$click_char = apply_filters( 'c2c_one_click_close_comments_click_char', $click_char );
+
+		if ( 0 === strpos( $click_char, 'dashicons-' ) ) {
+			$click_char = sprintf( '<span class="dashicons %s"></span>', esc_attr( $click_char ) );
+		}
+
+		return self::$click_char = $click_char;
 	}
 
 	/**
@@ -219,7 +234,7 @@ class c2c_OneClickCloseComments {
 				esc_attr( wp_create_nonce( self::$field ) ),
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
-				self::$click_char
+				self::get_click_char()
 			);
 
 			echo '<span class="screen-reader-text">' . self::$help_text[ $state ] . '</span>';

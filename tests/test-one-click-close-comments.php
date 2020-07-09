@@ -39,6 +39,11 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	//
 
 
+	public static function change_click_char ( $char ) {
+		return '*';
+	}
+
+
 	//
 	//
 	// TESTS
@@ -96,6 +101,26 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		if ( $priority ) {
 			$this->assertEquals( $priority, $prio );
 		}
+	}
+
+	/*
+	 * get_click_char()
+	 */
+
+	public function test_get_click_char() {
+		$this->assertEquals( '<span class="dashicons dashicons-admin-comments"></span>', c2c_OneClickCloseComments::get_click_char() );
+	}
+
+	/*
+	 * filter: c2c_one_click_close_comments_click_char
+	 */
+
+	public function test_filter_c2c_one_click_close_comments_click_char() {
+		add_filter( 'c2c_one_click_close_comments_click_char', array( __CLASS__, 'change_click_char' ) );
+
+		$this->assertEquals( '*', c2c_OneClickCloseComments::get_click_char() );
+
+		remove_filter( 'c2c_one_click_close_comments_click_char', array( __CLASS__, 'change_click_char' ) );
 	}
 
 	/*
