@@ -98,7 +98,9 @@ class c2c_OneClickCloseComments {
 		// Set translatable and filterable strings.
 		self::$help_text = array(
 			0 => __( 'Comments are closed. Click to open.', 'one-click-close-comments' ),
-			1 => __( 'Comments are open. Click to close.', 'one-click-close-comments' )
+			1 => __( 'Comments are open. Click to close.', 'one-click-close-comments' ),
+			2 => __( 'Comments are closed.', 'one-click-close-comments' ),
+			3 => __( 'Comments are open.', 'one-click-close-comments' ),
 		);
 		self::$field_title = '';
 
@@ -238,24 +240,18 @@ class c2c_OneClickCloseComments {
 		if ( self::$field === $column_name ) {
 			$auth = current_user_can( 'edit_post', $post_id );
 			$state = ( 'open' === $post->comment_status ? 1 : 0 );
-
-			if ( $auth ) {
-				echo "<span title='" . esc_attr( self::$help_text[ $state ] ) . "'>";
-			}
+			$help_text_index = $auth ? $state : $state + 2;
 
 			printf(
-				'<span id="%s" class="%s-%s" aria-hidden="true">%s</span>',
+				'<span id="%s" class="%s-%s" title="%s" aria-hidden="true">%s</span>',
 				esc_attr( wp_create_nonce( self::$field ) ),
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
+				esc_attr( self::$help_text[ $help_text_index ] ),
 				self::get_click_char()
 			);
 
-			echo '<span class="screen-reader-text">' . self::$help_text[ $state ] . '</span>';
-
-			if ( $auth ) {
-				echo '</span>';
-			}
+			echo '<span class="screen-reader-text">' . self::$help_text[ $help_text_index ] . '</span>';
 
 			return;
 		}

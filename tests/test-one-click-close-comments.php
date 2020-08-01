@@ -229,13 +229,27 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	 * handle_column_data()
 	 */
 
-	public function test_handle_column_data_when_user_does_not_have_caps() {
+	public function test_handle_column_data_with_comments_open_when_user_does_not_have_caps() {
 		wp_set_current_user( self::factory()->user->create( array( 'role' => 'subscriber' ) ) );
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
 
-		$expected = '<span id="%s" class="comment_state-1" aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
-		$expected .= '<span class="screen-reader-text">Comments are open. Click to close.</span>';
+		$expected = '<span id="%s" class="comment_state-1" title="Comments are open." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected .= '<span class="screen-reader-text">Comments are open.</span>';
+
+		$this->expectOutputRegex(
+			'~^' . sprintf( preg_quote( $expected ), '[^"]+' ) . '$~',
+			c2c_OneClickCloseComments::handle_column_data( 'close_comments', $post_id )
+		);
+	}
+
+	public function test_handle_column_data_with_comments_closed_when_user_does_not_have_caps() {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'subscriber' ) ) );
+		c2c_OneClickCloseComments::do_init();
+		$post_id = $this->factory->post->create( array( 'comment_status' => 'closed' ) );
+
+		$expected = '<span id="%s" class="comment_state-0" title="Comments are closed." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected .= '<span class="screen-reader-text">Comments are closed.</span>';
 
 		$this->expectOutputRegex(
 			'~^' . sprintf( preg_quote( $expected ), '[^"]+' ) . '$~',
@@ -248,10 +262,8 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
 
-		$expected = "<span title='Comments are open. Click to close.'>";
-		$expected .= '<span id="%s" class="comment_state-1" aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected = '<span id="%s" class="comment_state-1" title="Comments are open. Click to close." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
 		$expected .= '<span class="screen-reader-text">Comments are open. Click to close.</span>';
-		$expected .= '</span>';
 
 		$this->expectOutputRegex(
 			'~^' . sprintf( preg_quote( $expected ), '[^"]+' ) . '$~',
@@ -264,10 +276,8 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'closed' ) );
 
-		$expected = "<span title='Comments are closed. Click to open.'>";
-		$expected .= '<span id="%s" class="comment_state-0" aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected = '<span id="%s" class="comment_state-0" title="Comments are closed. Click to open." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
 		$expected .= '<span class="screen-reader-text">Comments are closed. Click to open.</span>';
-		$expected .= '</span>';
 
 		$this->expectOutputRegex(
 			'~^' . sprintf( preg_quote( $expected ), '[^"]+' ) . '$~',
