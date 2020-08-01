@@ -215,7 +215,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function add_post_column( $posts_columns ) {
 		// Insert column just before the comments count column.  If that column isn't visible to user, put at end.
-		if ( $i = array_search( 'columns', array_keys( $posts_columns ), true ) ) {
+		if ( $i = array_search( 'comments', array_keys( $posts_columns ), true ) ) {
 			$posts_columns = array_slice( $posts_columns, 0, $i, true )
 				+ array( self::$field => self::$field_title )
 				+ array_slice( $posts_columns, $i, null, true );

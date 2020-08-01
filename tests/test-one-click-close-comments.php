@@ -202,24 +202,27 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	 */
 
 	public function test_add_post_column_when_comments_column_present() {
-		$this->assertEquals(
-			array( 'a' => 'A', 'comments' => 'Comments', 'close_comments' => '', 'b' => 'B' ),
-			c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'comments' => 'Comments', 'b' => 'B' ) )
-		);
+		$expected = array( 'a' => 'A', 'close_comments' => '', 'comments' => 'Comments', 'b' => 'B' );
+		$actual = c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'comments' => 'Comments', 'b' => 'B' ) );
+
+		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( array_keys( $expected ), array_keys( $actual ) );
 	}
 
 	public function test_add_post_column_when_comments_column_present_as_last_column() {
-		$this->assertEquals(
-			array( 'a' => 'A', 'b' => 'B', 'comments' => 'Comments', 'close_comments' => '' ),
-			c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'b' => 'B', 'comments' => 'Comments' ) )
-		);
+		$expected = array( 'a' => 'A', 'b' => 'B', 'close_comments' => '', 'comments' => 'Comments' );
+		$actual = c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'b' => 'B', 'comments' => 'Comments' ) );
+
+		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( array_keys( $expected ), array_keys( $actual ) );
 	}
 
 	public function test_add_post_column_when_comments_column_not_present() {
-		$this->assertEquals(
-			array( 'a' => 'A', 'b' => 'B', 'close_comments' => '' ),
-			c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'b' => 'B' ) )
-		);
+		$expected = array( 'a' => 'A', 'b' => 'B', 'close_comments' => '' );
+		$actual = c2c_OneClickCloseComments::add_post_column( array( 'a' => 'A', 'b' => 'B' ) );
+
+		$this->assertEquals( $expected, $actual );
+		$this->assertEquals( array_keys( $expected ), array_keys( $actual ) );
 	}
 
 	/*
