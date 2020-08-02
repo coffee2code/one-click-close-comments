@@ -4,7 +4,7 @@
 * New: Extract code for determining click character into new `get_click_char()`
 * New: Add unit tests
 * New: Add `reset()` for resetting memoized variables
-* New: Add TODO.md and move existing TODO list from top of main plugin file into it
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add items to it)
 * Change: Improve output of markup
     * Remove encompassing `span` only shown for users authorized to toggle comment status
     * Add 'title' attribute to primary span to indicate current state
