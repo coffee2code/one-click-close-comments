@@ -1,8 +1,4 @@
 jQuery(document).ready(function($) {
-	$(".close_comments > span").live('mouseenter', function() {
-		$(this).addClass('click-span');
-	});
-
 	$(".close_comments > span").live('click', function() {
 		var span = $(this).find('span');
 		var current_class = span.attr('class');
