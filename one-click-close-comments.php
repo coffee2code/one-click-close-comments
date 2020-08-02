@@ -154,7 +154,7 @@ class c2c_OneClickCloseComments {
 
 		echo $echo;
 
-		if ( $and_exit ) {
+		if ( false !== $and_exit ) {
 			exit;
 		}
 	}
