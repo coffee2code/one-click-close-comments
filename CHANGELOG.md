@@ -10,6 +10,7 @@
     * Add 'title' attribute to primary span to indicate current state
     * Change text to not indicate that comment staus can be toggled when user does not have that capability
 * Change: Update JavaScript
+    * Change: Handle removal of a previously encapsulating `span`
     * Change: Remove unused code
     * Change: Update code syntax
 * Change: Allow class to be defined even when loaded outside the admin

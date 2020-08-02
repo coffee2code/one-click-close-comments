@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 	$(".close_comments > span").live('click', function() {
-		const span = $(this).find('span');
+		const span = $(this);
 		const current_class = span.attr('class');
 		if ( current_class === undefined ) {
 			return;
