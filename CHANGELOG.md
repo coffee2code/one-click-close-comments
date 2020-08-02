@@ -11,6 +11,7 @@
     * Change text to not indicate that comment staus can be toggled when user does not have that capability
 * Change: Update JavaScript
     * Change: Remove unused code
+    * Change: Update code syntax
 * Change: Allow class to be defined even when loaded outside the admin
 * Change: Return '-1' to Ajax requests that don't result in the comment status being toggled
 * Change: Add `$and_exit` argument to `toggle_comment_status()` to prevent exiting in order to facilitate unit testing
