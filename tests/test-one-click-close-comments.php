@@ -56,7 +56,7 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	}
 
 	public function test_version() {
-		$this->assertEquals( '2.6.1', c2c_OneClickCloseComments::version() );
+		$this->assertEquals( '2.7', c2c_OneClickCloseComments::version() );
 	}
 
 	public function test_hooks_plugins_loaded() {

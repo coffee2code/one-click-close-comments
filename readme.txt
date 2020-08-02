@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 5.4
-Stable tag: 2.6.1
+Stable tag: 2.7
 
 Conveniently close or open comments for a post or page with one click from the admin listing of posts.
 
@@ -93,6 +93,35 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
+= 2.7 (2020-08-02) =
+Highlights:
+
+* This recommended release updates its JavaScript, streamlines markup output, adds unit testing, adds a TODO.md file, updates a few URLs to be HTTPS, notes compatibility through 5.4+, and other minor behind-the-scenes improvements.
+
+Details:
+
+* New: Extract code for determining click character into new `get_click_char()`
+* New: Add unit tests
+* New: Add `reset()` for resetting memoized variables
+* New: Add TODO.md and move existing TODO list from top of main plugin file into it (and add items to it)
+* Change: Improve output of markup
+    * Remove encompassing `span` only shown for users authorized to toggle comment status
+    * Add 'title' attribute to primary span to indicate current state
+    * Change text to not indicate that comment staus can be toggled when user does not have that capability
+* Change: Update JavaScript
+    * Change: Migrate use of deprecated `.live()` to `.on()`
+    * Change: Handle removal of a previously encapsulating `span`
+    * Change: Remove unused code
+    * Change: Update code syntax
+* Change: Allow class to be defined even when loaded outside the admin
+* Change: Return '-1' to Ajax requests that don't result in the comment status being toggled
+* Change: Add `$and_exit` argument to `toggle_comment_status()` to prevent exiting in order to facilitate unit testing
+* Change: Refactor `add_post_column()` to be more concise
+* Change: Add inline docs for deprecated filter `one-click-close-comments-click-char`
+* Change: Switch to use of strict equality operator instead of simple equality operator
+* Change: Note compatibility through WP 5.4+
+* Change: Update links to coffee2code.com to be HTTPS
+
 = 2.6.1 (2019-11-24) =
 * New: Add additional FAQ items
 * Change: Note compatibility through WP 5.3+
@@ -114,21 +143,13 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 * Change: Update License URI to be HTTPS
 * Change: Update screenshot, icon, and banner for Plugin Directory
 
-= 2.5 (2018-08-03) =
-* Change: Improve display of control toggle (and label) on smaller viewports
-* Change: Include plugin version number when registering styles
-* New: Add README.md
-* Change: Add explicit curly braces to JS 'if' statement
-* Change: Add GitHub link to readme
-* Change: Note compatibility through WP 4.9+
-* Change: Update copyright date (2018)
-* Change: Rename readme.txt section from 'Filters' to 'Hooks'
-* Change: Modify formatting of hook name in readme to prevent being uppercased when shown in the Plugin Directory
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/one-click-close-comments/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.7 =
+Recommended update: updated JavaScript, streamlined markup output, added unit testing, added a TODO.md file, updated a few URLs to be HTTPS, noted compatibility through 5.4+, and other minor behind-the-scenes improvements.
 
 = 2.6.1 =
 Trivial update: added a couple more FAQs, noted compatibility through WP 5.3+, and updated copyright date (2020)

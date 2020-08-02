@@ -1,6 +1,13 @@
 # Changelog
 
-## _(in-progress)_
+## 2.7 _(2020-08-02)_
+
+### Highlights:
+
+This recommended release updates its JavaScript, streamlines markup output, adds unit testing, adds a TODO.md file, updates a few URLs to be HTTPS, notes compatibility through 5.4+, and other minor behind-the-scenes improvements.
+
+### Details:
+
 * New: Extract code for determining click character into new `get_click_char()`
 * New: Add unit tests
 * New: Add `reset()` for resetting memoized variables
