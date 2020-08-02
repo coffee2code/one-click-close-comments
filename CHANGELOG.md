@@ -10,6 +10,7 @@
     * Add 'title' attribute to primary span to indicate current state
     * Change text to not indicate that comment staus can be toggled when user does not have that capability
 * Change: Update JavaScript
+    * Change: Migrate use of deprecated `.live()` to `.on()`
     * Change: Handle removal of a previously encapsulating `span`
     * Change: Remove unused code
     * Change: Update code syntax
