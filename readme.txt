@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 5.7
-Stable tag: 2.7
+Stable tag: 2.7.1
 
 Conveniently close or open comments for a post or page with one click from the admin listing of posts.
 
@@ -93,6 +93,11 @@ add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' )
 
 == Changelog ==
 
+= 2.7.1 (2021-04-01) =
+* New: Add a unit test
+* Change: Note compatibility through WP 5.7+
+* Change: Update copyright date (2021)
+
 = 2.7 (2020-08-02) =
 Highlights:
 
@@ -127,26 +132,13 @@ Details:
 * Change: Note compatibility through WP 5.3+
 * Change: Update copyright date (2020)
 
-= 2.6 (2019-03-22) =
-* New: Add support for using dashicons for the click character
-* Change: Replace the bullet character (solid circle) with comment bubble dashicon as column icon for one-click link
-* New: Add CHANGELOG.md file and move all but most recent changelog entries into it
-* New: Add inline documentation for hook
-* Change: Initialize plugin on 'plugins_loaded' action instead of on load
-* Change: Use `apply_filters_deprecated()` when using the deprecated filter
-* Change: Use `wp_doing_ajax()` for official detection of use of AJAX
-* Change: Tweak plugin description
-* Change: Split paragraph in README.md's "Support" section into two
-* Change: Note compatibility through WP 5.1+
-* Change: Remove support for versions of WordPress older than 4.7
-* Change: Update copyright date (2019)
-* Change: Update License URI to be HTTPS
-* Change: Update screenshot, icon, and banner for Plugin Directory
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/one-click-close-comments/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 2.7.1 =
+Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)
 
 = 2.7 =
 Recommended update: updated JavaScript, streamlined markup output, added unit testing, added a TODO.md file, updated a few URLs to be HTTPS, noted compatibility through 5.4+, and other minor behind-the-scenes improvements.
