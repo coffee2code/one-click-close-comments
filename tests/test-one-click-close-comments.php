@@ -229,6 +229,14 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	 * handle_column_data()
 	 */
 
+	public function test_handle_column_data_with_some_other_column() {
+		wp_set_current_user( self::factory()->user->create( array( 'role' => 'administrator' ) ) );
+		c2c_OneClickCloseComments::do_init();
+		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
+
+		$this->expectOutputRegex( '~^$~', c2c_OneClickCloseComments::handle_column_data( 'comments', $post_id ) );
+	}
+
 	public function test_handle_column_data_with_comments_open_when_user_does_not_have_caps() {
 		wp_set_current_user( self::factory()->user->create( array( 'role' => 'subscriber' ) ) );
 		c2c_OneClickCloseComments::do_init();
