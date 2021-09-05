@@ -8,6 +8,7 @@
         * Change: Move `tests/bootstrap.php` into `tests/phpunit/`
         * Change: Move `tests/test-one-click-close-comments.php` into `tests/phpunit/tests/`
     * Change: Remove 'test-' prefix from unit test files
+    * Change: In bootstrap, store path to plugin file constant
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
 
 ## 2.7.1 _(2021-04-01)_
