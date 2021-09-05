@@ -2,6 +2,11 @@
 
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.8+
+* Unit tests:
+    * Change: Restructure unit test directories
+        * Change: Move `bin/` into `tests/`
+        * Change: Move `tests/bootstrap.php` into `tests/phpunit/`
+        * Change: Move `tests/test-one-click-close-comments.php` into `tests/phpunit/tests/`
 
 ## 2.7.1 _(2021-04-01)_
 * New: Add a unit test
