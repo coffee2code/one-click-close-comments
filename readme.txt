@@ -31,15 +31,15 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/one-click-close-comm
 
 = I can see the colored comment bubble indicating current commenting status, but why aren't they clickable? =
 
-The commenting status link/button is only clickable is you have JavaScript enabled.
+The commenting status link/button is only clickable if you have JavaScript enabled.
 
-= What does the color-coding of the comment bubble mean? =
+= What do the colors of the comment bubble mean? =
 
 Green means the post is currently open for comments; red means the post is not currently open for comments.
 
-= How can I customize the color-coding used for the comment bubble? =
+= How can I customize the colors used for the comment bubble? =
 
-You can customize the colors via CSS. `.comment-state-1` indicates comments are open. `.comment-state-0` indicates comments are closed. I recommend my [Add Admin CSS plugin](https://wordpress.org/plugins/add-admin-css/) to easily add this CSS.
+You can customize the colors via CSS. The class `.comment-state-1` applies to comments that are open. The class `.comment-state-0` applies to comments that are closed. I recommend my [Add Admin CSS plugin](https://wordpress.org/plugins/add-admin-css/) to easily add this CSS.
 
 = How can I customize the character used to represent commenting status? =
 
