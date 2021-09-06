@@ -44,11 +44,59 @@ defined( 'ABSPATH' ) or die();
 if ( ! class_exists( 'c2c_OneClickCloseComments' ) ) :
 
 class c2c_OneClickCloseComments {
-	private static $css_class   = 'comment_state'; /* Changing this requires changing .css and .js files */
-	private static $field       = 'close_comments'; /* Changing this requires changing .css and .js files */
+	/**
+	 * Class name used in markup for comment status toggle.
+	 *
+	 * NOTE: Changing this value requires changing .css and .js files.
+	 *
+	 * @access private
+	 * @var string
+	 */
+	private static $css_class = 'comment_state';
+
+	/**
+	 * Column ID.
+	 *
+	 * NOTE: Changing this value requires changing .css and .js files.
+	 *
+	 * @access private
+	 * @var string
+	 */
+	private static $field = 'close_comments';
+
+	/**
+	 * Base name for nonce field.
+	 *
+	 * @access private
+	 * @var string
+	 */
 	private static $nonce_field = 'update-close_comments';
+
+	/**
+	 * Title for field.
+	 *
+	 * NOTE: Intentionally an empty string.
+	 *
+	 * @access private
+	 * @var string
+	 */
 	private static $field_title = '';
+
+	/**
+	 * Memoized character or markup used as the toggle indicator.
+	 *
+	 * @access private
+	 * @see get_click_char()
+	 * @var string
+	 */
 	private static $click_char  = '';
+
+	/**
+	 * Memoized array of translated help text strings.
+	 *
+	 * @access private
+	 * @var string[]
+	 */
 	private static $help_text   = array();
 
 	/**

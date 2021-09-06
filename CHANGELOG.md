@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Prevent display and use of comment status indicator for post types that don't support comments
+* New: Add inline documentation to class variables
 * New: Add recommendation for Add Admin CSS plugin for adding the CSS suggested in FAQ entry related to customizing indicator
 * Change: Tweak some text in the FAQ section, including fixing a typo
 * Change: Note compatibility through WP 5.8+
