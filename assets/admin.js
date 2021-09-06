@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 		const help_text = [c2c_OneClickCloseComments.comments_closed_text, c2c_OneClickCloseComments.comments_opened_text];
 		$.post(ajaxurl, {
 				action: "close_comments",
-				_ajax_nonce: span.attr('id'),
+				_ajax_nonce: span.attr('data-nonce'),
 				post_id: post_id
 			}, function(data) {
 				if (data >= 0 && data <= 1) {

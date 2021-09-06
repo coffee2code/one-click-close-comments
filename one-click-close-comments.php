@@ -70,7 +70,7 @@ class c2c_OneClickCloseComments {
 	 * @access private
 	 * @var string
 	 */
-	private static $nonce_field = 'update-close_comments';
+	private static $nonce_field = 'update-close_comments-';
 
 	/**
 	 * Title for field.
@@ -229,7 +229,7 @@ class c2c_OneClickCloseComments {
 	 */
 	public static function toggle_comment_status( $and_exit = true ) {
 		$post_id = isset( $_POST['post_id'] ) ? (int) $_POST['post_id'] : null;
-		check_ajax_referer( self::$field, false, $and_exit );
+		check_ajax_referer( self::$nonce_field . $post_id, false, $and_exit );
 
 		$echo = '-1';
 
@@ -334,8 +334,8 @@ class c2c_OneClickCloseComments {
 			$help_text_index = $auth ? $state : $state + 2;
 
 			printf(
-				'<span id="%s" class="%s-%s" title="%s" aria-hidden="true">%s</span>',
-				esc_attr( wp_create_nonce( self::$field ) ),
+				'<span data-nonce="%s" class="%s-%s" title="%s" aria-hidden="true">%s</span>',
+				esc_attr( wp_create_nonce( self::$nonce_field . $post_id ) ),
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
 				esc_attr( self::$help_text[ $help_text_index ] ),
