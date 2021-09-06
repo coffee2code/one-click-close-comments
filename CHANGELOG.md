@@ -1,6 +1,7 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Prevent display and use of comment status indicator for post types that don't support comments
 * Change: Note compatibility through WP 5.8+
 * Change: Reduce number of 'Tags' in readme.txt
 * Unit tests:

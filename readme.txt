@@ -57,6 +57,10 @@ The comment status indicator only reflects the value of the "Allow Comments" set
 
 However, other plugins, the theme, or custom code may affect the visitor's ability to see the comment form when viewing a post and/or may permit or disable commenting at the time the post is shown to them despite the value of the setting. For instance, you could have another plugin installed which disables comments for a post after one year. After a year, that plugin would disable comments in its own way, but the comment status indicator for the post could reflect that comments are open since technically the post's "Allow Comments" setting would still be enabled.
 
+= Why can't I see the comment status indicator for certain custom post types? =
+
+The comment status indicator only appears for post types that support having comments.
+
 
 == Screenshots ==
 

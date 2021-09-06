@@ -112,11 +112,46 @@ class c2c_OneClickCloseComments {
 	}
 
 	/**
+	 * Determines if the one click close feature is enabled in the current
+	 * context.
+	 *
+	 * To clarify, this determines if the feature should be present in the
+	 * first place given the current context. If true, it does not reflect
+	 * whether the state is either open or close for a particular item.
+	 *
+	 * @since 2.8
+	 *
+	 * @return bool True if enabled, else false.
+	 */
+	public static function is_one_click_close_enabled() {
+		if ( ! is_admin() ) {
+			return false;
+		}
+
+		$screen = get_current_screen();
+
+		if ( ! $screen ) {
+			return false;
+		}
+
+		if ( $screen->post_type ) {
+			return post_type_supports( $screen->post_type, 'comments' );
+		}
+
+		return false;
+	}
+
+	/**
 	 * Enqueues styles and scripts.
 	 *
 	 * @since 2.2
 	 */
 	public static function enqueue_scripts_and_styles() {
+		// Bail if one click close is not enabled in current context.
+		if ( ! self::is_one_click_close_enabled() ) {
+			return;
+		}
+
 		// Enqueues JS for admin page.
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_admin_js' ) );
 

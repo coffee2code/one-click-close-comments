@@ -4,6 +4,12 @@ defined( 'ABSPATH' ) or die();
 
 class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 
+	public function setUp() {
+		parent::setUp();
+
+		set_current_screen( 'edit.php' );
+	}
+
 	public function tearDown() {
 		parent::tearDown();
 
@@ -113,6 +119,42 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::reset();
 
 		$this->test_get_click_char();
+	}
+
+	/*
+	 * is_one_click_close_enabled()
+	 */
+
+	public function test_is_one_click_close_enabled_when_not_in_admin() {
+		unset( $GLOBALS[ 'current_screen' ] );
+
+		$this->assertFalse( c2c_OneClickCloseComments::is_one_click_close_enabled() );
+	}
+
+	public function test_is_one_click_close_enabled_in_admin_for_post() {
+		set_current_screen( 'post' );
+
+		$this->assertTrue( c2c_OneClickCloseComments::is_one_click_close_enabled() );
+	}
+
+	public function test_is_one_click_close_enabled_for_post_type_that_supports_comments() {
+		register_post_type( 'book', array( 'public' => true, 'name' => 'Book', 'supports' => array( 'comments' ) ) );
+		set_current_screen( 'book' );
+
+		$this->assertTrue( c2c_OneClickCloseComments::is_one_click_close_enabled() );
+	}
+
+	public function test_is_one_click_close_enabled_for_post_type_that_does_not_support_comments() {
+		register_post_type( 'book', array( 'public' => true, 'name' => 'Book' ) );
+		set_current_screen( 'book' );
+
+		$this->assertTrue( c2c_OneClickCloseComments::is_one_click_close_enabled() );
+	}
+
+	public function test_is_one_click_close_enabled_for_unrecognized_post_type() {
+		set_current_screen( 'unknown' );
+
+		$this->assertFalse( c2c_OneClickCloseComments::is_one_click_close_enabled() );
 	}
 
 	/*
