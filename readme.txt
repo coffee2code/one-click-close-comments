@@ -39,7 +39,7 @@ Green means the post is currently open for comments; red means the post is not c
 
 = How can I customize the color-coding used for the comment bubble? =
 
-You can customize the colors via CSS. `.comment-state-1` indicates comments are open. `.comment-state-0` indicates comments are closed.
+You can customize the colors via CSS. `.comment-state-1` indicates comments are open. `.comment-state-0` indicates comments are closed. I recommend my [Add Admin CSS plugin](https://wordpress.org/plugins/add-admin-css/) to easily add this CSS.
 
 = How can I customize the character used to represent commenting status? =
 
