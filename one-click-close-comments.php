@@ -141,6 +141,11 @@ class c2c_OneClickCloseComments {
 	 * Handles actions to be hooked to 'init' action, such as loading text domain and loading plugin config data array.
 	 */
 	public static function do_init() {
+		// Bail if one click close is not enabled in current context.
+		if ( ! self::is_one_click_close_enabled() ) {
+			return;
+		}
+
 		// Load textdomain.
 		load_plugin_textdomain( 'one-click-close-comments' );
 
