@@ -2,6 +2,7 @@
 
 ## _(in-progress)_
 * Change: Note compatibility through WP 5.8+
+* Change: Reduce number of 'Tags' in readme.txt
 * Unit tests:
     * Change: Restructure unit test directories
         * Change: Move `bin/` into `tests/`
