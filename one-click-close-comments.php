@@ -334,8 +334,9 @@ class c2c_OneClickCloseComments {
 			$help_text_index = $auth ? $state : $state + 2;
 
 			printf(
-				'<span data-nonce="%s" class="%s-%s" title="%s" aria-hidden="true">%s</span>',
+				'<span data-nonce="%s" class="%s %s-%s" title="%s" aria-hidden="true">%s</span>',
 				esc_attr( wp_create_nonce( self::$nonce_field . $post_id ) ),
+				esc_attr( self::$css_class ),
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
 				esc_attr( self::$help_text[ $help_text_index ] ),
