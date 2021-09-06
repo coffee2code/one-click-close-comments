@@ -1,10 +1,9 @@
 .column-close_comments { width:2em; }
 .fixed .column-comments { padding-left: 8px; }
 td.column-close_comments { padding:0; vertical-align:middle; text-align:center;}
-.comment_state-0, .comment_state-1 { text-align:center; }
+.comment_state { cursor:pointer; text-align:center; }
 .comment_state-1 { color:#2ecc40; }
 .comment_state-0 { color:#ca4a1f; }
-.click-span { cursor: pointer; }
 @media screen and (max-width: 782px) {
 	.wp-list-table tr:not(.inline-edit-row):not(.no-items) td.column-primary~td.column-close_comments {
 		padding-bottom: 7px;

@@ -6,6 +6,7 @@
     * Change: Generate a unique nonce per post rather than a generic nonce
     * Change: Store nonce in 'data-nonce' attribute rather than 'id'
     * Change: Use unused private static class variable 'nonce_field' as base for nonce field key and value
+* Fix: Restore changing mouse cursor to a pointer on hover
 * Change: Assign additional generic class of 'comment_state' to indicator markup
 * Change: Reset field_title variable in `reset()` and use `reset()` during initialization
 * New: Add inline documentation to class variables
