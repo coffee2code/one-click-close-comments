@@ -116,6 +116,7 @@ class c2c_OneClickCloseComments {
 	 * @since 2.7
 	 */
 	public static function reset() {
+		self::$field_title = '';
 		self::$click_char = '';
 	}
 
@@ -143,6 +144,9 @@ class c2c_OneClickCloseComments {
 		// Load textdomain.
 		load_plugin_textdomain( 'one-click-close-comments' );
 
+		// Reset memoized variables.
+		self::reset();
+
 		// Set translatable and filterable strings.
 		self::$help_text = array(
 			0 => __( 'Comments are closed. Click to open.', 'one-click-close-comments' ),
@@ -150,7 +154,6 @@ class c2c_OneClickCloseComments {
 			2 => __( 'Comments are closed.', 'one-click-close-comments' ),
 			3 => __( 'Comments are open.', 'one-click-close-comments' ),
 		);
-		self::$field_title = '';
 
 		// Register hooks.
 		add_filter( 'manage_posts_columns',       array( __CLASS__, 'add_post_column' ) );
