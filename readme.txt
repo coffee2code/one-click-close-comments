@@ -22,7 +22,7 @@ Links: [Plugin Homepage](https://coffee2code.com/wp-plugins/one-click-close-comm
 
 == Installation ==
 
-1. Install via the built-in WordPress plugin installer. Or download and unzip `one-click-close-comments.zip` inside the plugins directory for your site (typically `wp-content/plugins/`)
+1. Install via the built-in WordPress plugin installer. Or install the plugin code inside the plugins directory for your site (typically `/wp-content/plugins/`).
 2. Activate the plugin through the 'Plugins' admin menu in WordPress
 3. When on the 'Edit Posts' or 'Edit Pages' admin pages, click the indicators to toggle the comment status for a post, as necessary.
 
