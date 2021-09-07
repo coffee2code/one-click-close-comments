@@ -145,10 +145,10 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 	}
 
 	public function test_is_one_click_close_enabled_for_post_type_that_does_not_support_comments() {
-		register_post_type( 'book', array( 'public' => true, 'name' => 'Book' ) );
-		set_current_screen( 'book' );
+		register_post_type( 'secret', array( 'public' => false, 'name' => 'Secret' ) );
+		set_current_screen( 'secret' );
 
-		$this->assertTrue( c2c_OneClickCloseComments::is_one_click_close_enabled() );
+		$this->assertFalse( c2c_OneClickCloseComments::is_one_click_close_enabled() );
 	}
 
 	public function test_is_one_click_close_enabled_for_unrecognized_post_type() {
