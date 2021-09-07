@@ -1,6 +1,9 @@
 # Changelog
 
 ## _(in-progress)_
+* Change: Prevent UI cues indicating comment status might be changeable to users who cannot change them (they never could)
+    * Change: Prevent cursor from changing to pointer when comment status cannot be changed
+    * Change: Prevent asynchronous JS submission of request to toggle comment status
 * Change: Prevent display and use of comment status indicator for post types that don't support comments
 * Change: Improve nonce handling
     * Change: Generate a unique nonce per post rather than a generic nonce

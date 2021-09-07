@@ -2,7 +2,7 @@ jQuery(document).ready(function($) {
 	$('.close_comments').on('click', '> span', function() {
 		const span = $(this);
 		const current_class = span.attr('class');
-		if ( current_class === undefined ) {
+		if ( current_class === undefined || span.hasClass('comment_state-disabled') ) {
 			return;
 		}
 		const cclass = current_class.split('-');
