@@ -374,7 +374,7 @@ class c2c_OneClickCloseComments {
 	 * @since 2.2
 	 */
 	public static function enqueue_admin_js() {
-		wp_enqueue_script( __CLASS__, plugins_url( 'assets/admin.js', __FILE__ ), array( 'jquery' ), self::version(), true );
+		wp_enqueue_script( __CLASS__, plugins_url( 'assets/admin.js', __FILE__ ), array(), self::version(), true );
 
 		$text = array(
 			'comments_closed_text' => self::$help_text[0],

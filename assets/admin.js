@@ -1,30 +1,43 @@
-jQuery(document).ready(function($) {
-	$('.close_comments').on('click', '> span', function() {
-		const span = $(this);
-		const current_class = span.attr('class');
-		if ( current_class === undefined || span.hasClass('comment_state-disabled') ) {
-			return;
-		}
-		const cclass = current_class.split('-');
-		const new_class = cclass[0] + '-';
-		const post_tr = $(this).parents('tr');
-		const post_id = post_tr.attr('id').substr(5);
-		const help_text = [c2c_OneClickCloseComments.comments_closed_text, c2c_OneClickCloseComments.comments_opened_text];
-		$.post(ajaxurl, {
-				action: "close_comments",
-				_ajax_nonce: span.attr('data-nonce'),
-				post_id: post_id
-			}, function(data) {
+document.addEventListener('DOMContentLoaded', function () {
+	document.querySelectorAll('.comment_state:not(.comment_state-disabled').forEach( (btn) => {
+		btn.addEventListener('click', event => {
+			const target = event.target.parentNode;
+
+			if ( ! target.classList.contains('comment_state') || target.classList.contains('comment_state-disabled')) {
+				return;
+			}
+
+			const is_close = target.classList.contains('comment_state-0');
+			const is_open = target.classList.contains('comment_state-1');
+
+			// If target is neither open or close, something is wrong or this isn't a desired target.
+			if ( ! is_close && ! is_open ) {
+				return;
+			}
+
+			const post_id = target.closest('tr').id.substr(5);
+			const help_text = [c2c_OneClickCloseComments.comments_closed_text, c2c_OneClickCloseComments.comments_opened_text];
+			const ajax_nonce = target.dataset.nonce;
+
+			fetch(ajaxurl, {
+				method: 'POST',
+				headers: {'Content-Type':'application/x-www-form-urlencoded'},
+				body: `action=close_comments&_ajax_nonce=${encodeURIComponent(ajax_nonce)}&post_id=${encodeURIComponent(post_id)}`
+			})
+			.then(res => res.text())
+			.then(data => {
 				if (data >= 0 && data <= 1) {
-					span.removeClass(current_class);
-					span.addClass(new_class + data);
-					span.parent().attr('title', help_text[data]);
-					span.parent().find('.screen-reader-text').text(help_text[data]);
-					// Update hidden field used to configure Quick Edit
-					$('#inline_'+post_id+' div.comment_status').html( (data == '1' ? 'open' : 'closed') );
+					// Toggle classes.
+					target.classList.toggle('comment_state-0');
+					target.classList.toggle('comment_state-1');
+					// Update title attribute for toggle.
+					target.setAttribute('title', help_text[data]);
+					// Update screen reader text.
+					target.parentNode.querySelector('.screen-reader-text').textContent = help_text[data];
+					// Update hidden field used to configure Quick Edit.
+					document.querySelector('#inline_'+post_id+' div.comment_status').textContent = (data == '1' ? 'open' : 'closed');
 				}
-			}, "text"
-		);
-		return false;
+			});
+		});
 	});
-});
+}, false);

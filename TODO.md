@@ -10,7 +10,6 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 * Add line breaks to output
 * Add admin bar node for front end access when viewing individual post
 * Add unit test for localized strings passed to JS
-* Remove jQuery dependency
 * Remove support for deprecated filter `one-click-close-comments-click-char` (since 2.0)
 
 Feel free to make your own suggestions or champion for something already on the list (via the [plugin's support forum on WordPress.org](https://wordpress.org/support/plugin/one-click-close-comments/) or on [GitHub](https://github.com/coffee2code/one-click-close-comments/) as an issue or PR).
