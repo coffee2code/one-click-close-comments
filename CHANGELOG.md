@@ -1,6 +1,9 @@
 # Changelog
 
-## _(in-progress)_
+* Change: Improve accessibility
+    * Change: Use a semantic `button` instead of a `span`
+    * New: Allow comment state buttons to be navigable by keyboard
+    * New: Allow keyboard control by having the spacebar toggle comment state when toggle is focused
 * Change: Reimplement JavaScript to use vanilla JS and discontinue use of jQuery
 * Change: Prevent UI cues indicating comment status might be changeable to users who cannot change them (they never could)
     * Change: Prevent cursor from changing to pointer when comment status cannot be changed

@@ -334,7 +334,7 @@ class c2c_OneClickCloseComments {
 			$help_text_index = $auth ? $state : $state + 2;
 
 			printf(
-				'<span data-nonce="%s" class="%s %s%s-%s" title="%s" aria-hidden="true">%s</span>',
+				'<button type="button" data-nonce="%s" class="%s %s%s-%s" title="%s">%s</button>',
 				esc_attr( wp_create_nonce( self::$nonce_field . $post_id ) ),
 				esc_attr( self::$css_class ),
 				esc_attr( $auth ? '' : self::$css_class . '-disabled ' ),

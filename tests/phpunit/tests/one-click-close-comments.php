@@ -284,7 +284,7 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
 
-		$expected = '<span data-nonce="%s" class="comment_state comment_state-disabled comment_state-1" title="Comments are open." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected = '<button type="button" data-nonce="%s" class="comment_state comment_state-disabled comment_state-1" title="Comments are open."><span class="dashicons dashicons-admin-comments"></span></button>';
 		$expected .= '<span class="screen-reader-text">Comments are open.</span>';
 
 		$this->expectOutputRegex(
@@ -298,7 +298,7 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'closed' ) );
 
-		$expected = '<span data-nonce="%s" class="comment_state comment_state-disabled comment_state-0" title="Comments are closed." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected = '<button type="button" data-nonce="%s" class="comment_state comment_state-disabled comment_state-0" title="Comments are closed."><span class="dashicons dashicons-admin-comments"></span></button>';
 		$expected .= '<span class="screen-reader-text">Comments are closed.</span>';
 
 		$this->expectOutputRegex(
@@ -312,7 +312,7 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'open' ) );
 
-		$expected = '<span data-nonce="%s" class="comment_state comment_state-1" title="Comments are open. Click to close." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected = '<button type="button" data-nonce="%s" class="comment_state comment_state-1" title="Comments are open. Click to close."><span class="dashicons dashicons-admin-comments"></span></button>';
 		$expected .= '<span class="screen-reader-text">Comments are open. Click to close.</span>';
 
 		$this->expectOutputRegex(
@@ -326,7 +326,7 @@ class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 		c2c_OneClickCloseComments::do_init();
 		$post_id = $this->factory->post->create( array( 'comment_status' => 'closed' ) );
 
-		$expected = '<span data-nonce="%s" class="comment_state comment_state-0" title="Comments are closed. Click to open." aria-hidden="true"><span class="dashicons dashicons-admin-comments"></span></span>';
+		$expected = '<button type="button" data-nonce="%s" class="comment_state comment_state-0" title="Comments are closed. Click to open."><span class="dashicons dashicons-admin-comments"></span></button>';
 		$expected .= '<span class="screen-reader-text">Comments are closed. Click to open.</span>';
 
 		$this->expectOutputRegex(
