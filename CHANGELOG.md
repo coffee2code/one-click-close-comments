@@ -17,7 +17,7 @@
 * New: Add recommendation for Add Admin CSS plugin for adding the CSS suggested in FAQ entry related to customizing indicator
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Tweak some text in the FAQ section, including fixing a typo
-* Change: Note compatibility through WP 5.8+
+* Change: Note compatibility through WP 6.3+
 * Change: Tweak installation instruction
 * Change: Reduce number of 'Tags' in readme.txt
 * Unit tests:
