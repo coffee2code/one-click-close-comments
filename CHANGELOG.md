@@ -15,6 +15,7 @@
 * Change: Reset field_title variable in `reset()` and use `reset()` during initialization
 * New: Add inline documentation to class variables
 * New: Add recommendation for Add Admin CSS plugin for adding the CSS suggested in FAQ entry related to customizing indicator
+* New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Tweak some text in the FAQ section, including fixing a typo
 * Change: Note compatibility through WP 5.8+
 * Change: Tweak installation instruction

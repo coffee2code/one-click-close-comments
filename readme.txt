@@ -67,32 +67,13 @@ The comment status indicator only appears for post types that support having com
 1. A screenshot of the 'Posts' admin page with the plugin activated. The tooltip (from hovering over a green indicator) reads: "Comments are open. Click to close." Were the mouse to hover over a red indicator, the tooltip would read: "Comments are closed. Click to open."
 
 
-== Hooks ==
+== Developer Documentation ==
 
-The plugin exposes one filter for hooking. Such code should ideally be put into a mu-plugin or site-specific plugin (which is beyond the scope of this readme to explain).
+Developer documentation can be found in [DEVELOPER-DOCS.md](https://github.com/coffee2code/one-click-close-comments/blob/master/DEVELOPER-DOCS.md). That documentation covers the hooks provided by the plugin.
 
-**c2c_one_click_close_comments_click_char (filter)**
+As an overview, these are the hooks provided by the plugin:
 
-The 'c2c_one_click_close_comments_click_char' hook allows you to use an alternative character, string, or markup as the plugin's indicator in the posts listing tables. It is the character that gets color-coded to indicate if comments are open or close, and the thing to click to toggle the comment open status. You can make use of [Dashicons](https://developer.wordpress.org/resource/dashicons/) by specifying the desired dashicon's name (with the "dashicons-" prefix). By default this is the comments dashicon, `dashicons-admin-comments`.
-
-Arguments:
-
-* $char (array): The character, string, or markup to be used for display (by default this is `dashicons-admin-comments`).
-
-Example:
-
-`
-/**
- * Changes the character used as the one-click link to a bullet (solid circle).
- *
- * @param string $char The default character.
- * @return string
- */
-function custom_one_click_char( $char ) {
-	return '&bull;';
-}
-add_filter( 'c2c_one_click_close_comments_click_char', 'custom_one_click_char' );
-`
+* `c2c_one_click_close_comments_click_char` : Filter to customize the character, string, or markup used as the indicator used to toggle a post's comment status.
 
 
 == Changelog ==
