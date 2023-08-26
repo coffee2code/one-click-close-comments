@@ -13,6 +13,7 @@
     * Change: Generate a unique nonce per post rather than a generic nonce
     * Change: Store nonce in 'data-nonce' attribute rather than 'id'
     * Change: Use unused private static class variable 'nonce_field' as base for nonce field key and value
+* Change: Remove any markup potentially introduced in a string translation
 * Fix: Restore changing mouse cursor to a pointer on hover
 * Change: Assign additional generic class of 'comment_state' to indicator markup
 * Change: Reset field_title variable in `reset()` and use `reset()` during initialization
@@ -25,6 +26,7 @@
 * Change: Tweak installation instruction
 * Change: Reduce number of 'Tags' in readme.txt
 * Unit tests:
+    * Fix: Allow tests to run against current versions of WordPress
     * Change: Restructure unit test directories
         * Change: Move `bin/` into `tests/`
         * Change: Move `tests/bootstrap.php` into `tests/phpunit/`
@@ -33,6 +35,7 @@
     * Change: In bootstrap, store path to plugin file constant
     * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+    * New: Add `composer.json` for PHPUnit Polyfill dependency
 
 ## 2.7.1 _(2021-04-01)_
 * New: Add a unit test

@@ -340,11 +340,11 @@ class c2c_OneClickCloseComments {
 				esc_attr( $auth ? '' : self::$css_class . '-disabled ' ),
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
-				esc_attr( self::$help_text[ $help_text_index ] ),
+				esc_attr( wp_strip_all_tags( self::$help_text[ $help_text_index ] ) ),
 				self::get_click_char()
 			);
 
-			echo '<span class="screen-reader-text">' . self::$help_text[ $help_text_index ] . '</span>';
+			echo '<span class="screen-reader-text">' . esc_html( wp_strip_all_tags( self::$help_text[ $help_text_index ] ) ) . '</span>';
 
 			return;
 		}
