@@ -61,6 +61,10 @@ However, other plugins, the theme, or custom code may affect the visitor's abili
 
 The comment status indicator only appears for post types that support having comments.
 
+= Does this plugin have unit tests? =
+
+Yes. The tests are not packaged in the release .zip file or included in plugins.svn.wordpress.org, but can be found in the [plugin's GitHub repository](https://github.com/coffee2code/one-click-close-comments/).
+
 
 == Screenshots ==
 

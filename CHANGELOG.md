@@ -25,6 +25,7 @@
 * Change: Update copyright date (2023)
 * Change: Tweak installation instruction
 * Change: Reduce number of 'Tags' in readme.txt
+* Change: Remove development and testing related files from release packaging
 * Unit tests:
     * Fix: Allow tests to run against current versions of WordPress
     * Change: Restructure unit test directories
