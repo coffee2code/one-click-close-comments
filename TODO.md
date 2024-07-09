@@ -11,5 +11,12 @@ The following list comprises ideas, suggestions, and known issues, all of which 
 * Add admin bar node for front end access when viewing individual post
 * Add unit test for localized strings passed to JS
 * Remove support for deprecated filter `one-click-close-comments-click-char` (since 2.0)
+* Support using separate indicators to represent open and closed commenting
+  * Separately memoize the open and close chars
+  * Send context as additional arg to filter
+    * Document additional arg
+  * Render potentially different open and close chars in `handle_column_data()`. Rather than relying on a class to store state in the markup, actually render each indicator separately and have state determined by what is visible.
+  * Change how JS to react to indicator visibility and to toggle the visibility states of the two associated indicators
+* Add settings field to customize the indicator character/string
 
 Feel free to make your own suggestions or champion for something already on the list (via the [plugin's support forum on WordPress.org](https://wordpress.org/support/plugin/one-click-close-comments/) or on [GitHub](https://github.com/coffee2code/one-click-close-comments/) as an issue or PR).
