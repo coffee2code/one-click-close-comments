@@ -5,6 +5,9 @@
  * @package One_Click_Close_Comments
  */
 
+// Prevent web access.
+( php_sapi_name() !== 'cli' ) && die();
+
 define( 'ONE_CLICK_CLOSE_COMMENTS_PLUGIN_DIR',  dirname( __FILE__, 3 ) );
 define( 'ONE_CLICK_CLOSE_COMMENTS_PLUGIN_FILE', ONE_CLICK_CLOSE_COMMENTS_PLUGIN_DIR . '/one-click-close-comments.php' );
 

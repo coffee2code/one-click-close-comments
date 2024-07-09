@@ -28,6 +28,7 @@
 * Change: Remove development and testing related files from release packaging
 * Unit tests:
     * Fix: Allow tests to run against current versions of WordPress
+    * Hardening: Prevent direct web access to `bootstrap.php`
     * Change: Restructure unit test directories
         * Change: Move `bin/` into `tests/`
         * Change: Move `tests/bootstrap.php` into `tests/phpunit/`
