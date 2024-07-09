@@ -22,7 +22,7 @@
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Tweak some text in the FAQ section, including fixing a typo
 * Change: Note compatibility through WP 6.3+
-* Change: Update copyright date (2023)
+* Change: Update copyright date (2024)
 * Change: Tweak installation instruction
 * Change: Reduce number of 'Tags' in readme.txt
 * Change: Remove development and testing related files from release packaging
