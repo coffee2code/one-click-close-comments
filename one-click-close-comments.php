@@ -240,8 +240,16 @@ class c2c_OneClickCloseComments {
 				global $wpdb;
 				$new_status = ( 'open' === $post->comment_status ? 'closed' : 'open' );
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- No caching needed.
-				$wpdb->update( $wpdb->posts, [ 'comment_status' => $new_status ], [ 'ID' => $post_id ], [ '%s' ], [ '%d' ] );
-				$echo = ( 'open' === $new_status ? '1' : '0' );
+				$updated = $wpdb->update( $wpdb->posts, [ 'comment_status' => $new_status ], [ 'ID' => $post_id ], [ '%s' ], [ '%d' ] );
+				// If a row was updated, new status is valid.
+				if ( $updated ) {
+					$result = ( 'open' === $new_status ? '1' : '0' );
+				}
+				// Else no rows were updated or a problem was encountered, so return existing comment status.
+				else {
+					$result = ( 'open' === $post->comment_status ? '1' : '0' );
+				}
+				$echo = $result;
 			}
 		}
 
