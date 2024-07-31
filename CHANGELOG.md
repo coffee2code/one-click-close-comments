@@ -17,6 +17,7 @@
 * Fix: Restore changing mouse cursor to a pointer on hover
 * Change: Assign additional generic class of 'comment_state' to indicator markup
 * Change: Reset field_title variable in `reset()` and use `reset()` during initialization
+* Change: Use `update()` rather than `query()` for making SQL update request
 * New: Add inline documentation to class variables
 * New: Add recommendation for Add Admin CSS plugin for adding the CSS suggested in FAQ entry related to customizing indicator
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it

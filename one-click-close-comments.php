@@ -238,7 +238,7 @@ class c2c_OneClickCloseComments {
 			if ( $post ) {
 				global $wpdb;
 				$new_status = ( 'open' === $post->comment_status ? 'closed' : 'open' );
-				$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->posts SET comment_status = %s WHERE ID = %d", $new_status, $post_id ) );
+				$wpdb->update( $wpdb->posts, [ 'comment_status' => $new_status ], [ 'ID' => $post_id ], [ '%s' ], [ '%d' ] );
 				$echo = ( 'open' === $new_status ? '1' : '0' );
 			}
 		}
