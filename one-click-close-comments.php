@@ -243,7 +243,7 @@ class c2c_OneClickCloseComments {
 			}
 		}
 
-		echo $echo;
+		echo intval( $echo );
 
 		if ( false !== $and_exit ) {
 			exit;

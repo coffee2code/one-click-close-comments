@@ -13,6 +13,7 @@
     * Change: Generate a unique nonce per post rather than a generic nonce
     * Change: Store nonce in 'data-nonce' attribute rather than 'id'
     * Change: Use unused private static class variable 'nonce_field' as base for nonce field key and value
+* Change: Ensure AJAX response is only ever an integer
 * Change: Remove any markup potentially introduced in a string translation
 * Fix: Restore changing mouse cursor to a pointer on hover
 * Change: Assign additional generic class of 'comment_state' to indicator markup
