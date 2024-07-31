@@ -22,6 +22,7 @@
 * New: Add inline documentation to class variables
 * New: Add recommendation for Add Admin CSS plugin for adding the CSS suggested in FAQ entry related to customizing indicator
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
+* Change: Prevent unwarranted PHPCS complaints
 * Change: Tweak some text in the FAQ section, including fixing a typo
 * Change: Note compatibility through WP 6.6+
 * Change: Update copyright date (2024)

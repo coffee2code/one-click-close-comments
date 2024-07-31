@@ -132,6 +132,7 @@ class c2c_OneClickCloseComments {
 		add_action( 'load-edit.php',         array( __CLASS__, 'enqueue_scripts_and_styles' ) );
 		add_action( 'wp_ajax_'.self::$field, array( __CLASS__, 'toggle_comment_status' ) );
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce not needed as this selectively triggers init procedures, which are harmless even if always triggered.
 		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && 'inline-save' === $_REQUEST['action'] ) {
 			add_action( 'admin_init',        array( __CLASS__, 'do_init' ) );
 		}
@@ -238,6 +239,7 @@ class c2c_OneClickCloseComments {
 			if ( $post ) {
 				global $wpdb;
 				$new_status = ( 'open' === $post->comment_status ? 'closed' : 'open' );
+				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- No caching needed.
 				$wpdb->update( $wpdb->posts, [ 'comment_status' => $new_status ], [ 'ID' => $post_id ], [ '%s' ], [ '%d' ] );
 				$echo = ( 'open' === $new_status ? '1' : '0' );
 			}
@@ -341,6 +343,7 @@ class c2c_OneClickCloseComments {
 				esc_attr( self::$css_class ),
 				esc_attr( $state ),
 				esc_attr( wp_strip_all_tags( self::$help_text[ $help_text_index ] ) ),
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Markup is permitted.
 				self::get_click_char()
 			);
 
