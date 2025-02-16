@@ -27,6 +27,7 @@
 * Change: Tweak some text in the FAQ section, including fixing a typo
 * Change: Note compatibility through WP 6.8+
 * Change: Update copyright date (2025)
+* Change: Note compatibility through PHP 8.3+
 * Change: Tweak installation instruction
 * Change: Reduce number of 'Tags' in readme.txt
 * Change: Remove development and testing related files from release packaging
