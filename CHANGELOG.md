@@ -44,6 +44,7 @@
     * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
     * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
     * New: Add `composer.json` for PHPUnit Polyfill dependency
+    * Change: Explicitly define return type for overridden methods
 * New: Add a few more possible TODO items
 
 ## 2.7.1 _(2021-04-01)_

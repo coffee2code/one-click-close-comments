@@ -4,13 +4,13 @@ defined( 'ABSPATH' ) or die();
 
 class One_Click_Close_Comments_Test extends WP_UnitTestCase {
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 
 		set_current_screen( 'edit.php' );
 	}
 
-	public function tearDown() {
+	public function tearDown(): void {
 		parent::tearDown();
 
 		c2c_OneClickCloseComments::reset();
