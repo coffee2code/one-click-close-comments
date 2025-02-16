@@ -147,9 +147,6 @@ class c2c_OneClickCloseComments {
 			return;
 		}
 
-		// Load textdomain.
-		load_plugin_textdomain( 'one-click-close-comments' );
-
 		// Reset memoized variables.
 		self::reset();
 
