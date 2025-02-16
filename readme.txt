@@ -6,7 +6,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Requires at least: 4.7
 Tested up to: 6.8
-Stable tag: 2.7.1
+Stable tag: 3.0
 
 Conveniently close or open comments for a post or page with one click from the admin listing of posts.
 
@@ -82,6 +82,60 @@ As an overview, these are the hooks provided by the plugin:
 
 == Changelog ==
 
+= 3.0 (2025-04-17) =
+Highlights:
+
+This long-awaited major release improves accessibility by allowing keyboard navigation and interaction, reimplements JS to only use vanilla JS, properly shows (or doesn't show) mouse cursor as pointer when hovering over comment status toggle, notes compatibility through WP 6.8+, and more.
+
+Details:
+
+* Change: Improve accessibility
+    * Change: Use a semantic `button` instead of a `span`
+    * New: Allow comment state buttons to be navigable by keyboard
+    * New: Allow keyboard control by having the spacebar toggle comment state when toggle is focused
+* Change: Reimplement JavaScript to use vanilla JS and discontinue use of jQuery
+* Change: Prevent UI cues indicating comment status might be changeable to users who cannot change them (they never could)
+    * Change: Prevent cursor from changing to pointer when comment status cannot be changed
+    * Change: Prevent asynchronous JS submission of request to toggle comment status
+* Change: Prevent display and use of comment status indicator for post types that don't support comments
+* Change: Improve nonce handling
+    * Change: Generate a unique nonce per post rather than a generic nonce
+    * Change: Store nonce in 'data-nonce' attribute rather than 'id'
+    * Change: Use unused private static class variable 'nonce_field' as base for nonce field key and value
+* Change: Use result of update to recognize if the comment status didn't get changed for some reason
+* Change: Ensure AJAX response is only ever an integer
+* Change: Remove any markup potentially introduced in a string translation
+* Fix: Restore changing mouse cursor to a pointer on hover
+* Change: Assign additional generic class of 'comment_state' to indicator markup
+* Change: Reset field_title variable in `reset()` and use `reset()` during initialization
+* Change: Use `update()` rather than `query()` for making SQL update request
+* New: Add inline documentation to class variables
+* New: Add recommendation for Add Admin CSS plugin for adding the CSS suggested in FAQ entry related to customizing indicator
+* New: Add DEVELOPER-DOCS.md and move hooks documentation into it
+* Change: Discontinue unnecessary explicit loading of textdomain
+* Change: Prevent unwarranted PHPCS complaints
+* Change: Tweak some text in the FAQ section, including fixing a typo
+* Change: Note compatibility through WP 6.8+
+* Change: Update copyright date (2025)
+* Change: Note compatibility through PHP 8.3+
+* Change: Tweak installation instruction
+* Change: Reduce number of 'Tags' in readme.txt
+* Change: Remove development and testing related files from release packaging
+* Unit tests:
+    * Fix: Allow tests to run against current versions of WordPress
+    * Hardening: Prevent direct web access to `bootstrap.php`
+    * Change: Restructure unit test directories
+        * Change: Move `bin/` into `tests/`
+        * Change: Move `tests/bootstrap.php` into `tests/phpunit/`
+        * Change: Move `tests/test-one-click-close-comments.php` into `tests/phpunit/tests/`
+    * Change: Remove 'test-' prefix from unit test files
+    * Change: In bootstrap, store path to plugin file constant
+    * Change: In bootstrap, add backcompat for PHPUnit pre-v6.0
+    * Change: Rename `phpunit.xml` to `phpunit.xml.dist` per best practices
+    * New: Add `composer.json` for PHPUnit Polyfill dependency
+    * Change: Explicitly define return type for overridden methods
+* New: Add a few more possible TODO items
+
 = 2.7.1 (2021-04-01) =
 * New: Add a unit test
 * Change: Note compatibility through WP 5.7+
@@ -116,15 +170,13 @@ Details:
 * Change: Note compatibility through WP 5.4+
 * Change: Update links to coffee2code.com to be HTTPS
 
-= 2.6.1 (2019-11-24) =
-* New: Add additional FAQ items
-* Change: Note compatibility through WP 5.3+
-* Change: Update copyright date (2020)
-
 _Full changelog is available in [CHANGELOG.md](https://github.com/coffee2code/one-click-close-comments/blob/master/CHANGELOG.md)._
 
 
 == Upgrade Notice ==
+
+= 3.0 =
+Recommended update: improved accessibility by allowing keyboard navigation and interaction, reimplemented JS to only use vanilla JS, properly show (or don't) mouse cursor as pointer when hovering over comment status toggle, noted compatibility through WP 6.8+, and much more.
 
 = 2.7.1 =
 Trivial update: noted compatibility through WP 5.7+ and updated copyright date (2021)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.0 _(2025-04-17)_
+
+### Highlights:
+
+This long-awaited major release improves accessibility by allowing keyboard navigation and interaction, reimplements JS to only use vanilla JS, properly shows (or doesn't show) mouse cursor as pointer when hovering over comment status toggle, notes compatibility through WP 6.8+, and more.
+
+### Details:
+
 * Change: Improve accessibility
     * Change: Use a semantic `button` instead of a `span`
     * New: Allow comment state buttons to be navigable by keyboard
