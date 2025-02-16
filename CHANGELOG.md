@@ -25,7 +25,7 @@
 * New: Add DEVELOPER-DOCS.md and move hooks documentation into it
 * Change: Prevent unwarranted PHPCS complaints
 * Change: Tweak some text in the FAQ section, including fixing a typo
-* Change: Note compatibility through WP 6.6+
+* Change: Note compatibility through WP 6.8+
 * Change: Update copyright date (2024)
 * Change: Tweak installation instruction
 * Change: Reduce number of 'Tags' in readme.txt
